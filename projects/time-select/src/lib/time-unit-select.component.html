@@ -1,0 +1,13 @@
+<div class="mat-time-unit-select-carousel">
+  <button class="mat-time-unit-select-arrow mat-time-unit-select-prev" mat-icon-button aria-label="Previous" (click)="prev()">
+    <mat-icon>keyboard_arrow_up</mat-icon>
+  </button>
+  <div class="mat-time-unit-select-mask">
+    <div #panel class="mat-time-unit-select-panel">
+      <mat-time-unit-option *ngFor="let option of options" [value]="option.value"> {{ option.label }} </mat-time-unit-option>
+    </div>
+  </div>
+  <button class="mat-time-unit-select-arrow mat-time-unit-select-next" mat-icon-button aria-label="Next" (click)="next()">
+    <mat-icon>keyboard_arrow_down</mat-icon>
+  </button>
+</div>

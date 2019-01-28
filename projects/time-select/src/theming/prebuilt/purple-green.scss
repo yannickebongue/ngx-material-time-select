@@ -1,0 +1,15 @@
+@import "../all-theme";
+
+
+// Include non-theme styles for core.
+$config: mat-typography-config();
+
+@include ngx-material-time-select-typography($config);
+
+// Define a theme.
+$primary: mat-palette($mat-purple, 700, 500, 800);
+$accent:  mat-palette($mat-green, A200, A100, A400);
+
+$theme: mat-dark-theme($primary, $accent);
+
+@include ngx-material-time-select-theme($theme);

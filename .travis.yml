@@ -1,0 +1,30 @@
+language: node_js
+node_js:
+- '9'
+dist: trusty
+sudo: required
+before_install:
+- npm install -g @angular/cli
+- npm install -g gulp-cli
+script:
+- npm run build
+- npm run build:docs
+deploy:
+  - provider: npm
+    skip_cleanup: true
+    local_dir: dist/time-select
+    email: yannickebongue@yahoo.fr
+    api_key:
+      secure: Uyi7wAdcl6uPNYL1yP6w9A+q5sm0fGDBL542Eh7bb6DqkFR9ayhll1mxZdSHWrY+dr28t82t84EK5VFLKzbnbdotaW2qTxjAdky69MrhRnGDX8a4+e4zI2bJcWHJGH0hV/0ay41w5lHwZ8+aRTtUi11sNc4qLB7dqZUccUvEtCAxiiyKsqok0nCsQf0oQR2wbyuEJ19JGPoLbweWtTLkXNE13pu58JHdBjqIEbU5FDKou7etcaGjTTjrGAOuYfQHwbY6sHiOu7krmn5fcPyqZXbCLpblhshgZC4G/jrfT1bKuSWihqOGyWH/FLWeVMWJWbZ55gLl3qDUZRVc07lDvQIOG/Nx5gZ6SblN4rJRFt1ASToCLd6IxUViBpvOn75UK/17Q/3U9M19ylUqZaeJtiTFbej22uZqANS9Yzt3OeFW7f0qBqk6I3s+/Gzu+upbVsKAV18/Fx0gRFUv8Iwndz/C9tRYjWjgeVp3/fQDdHjDi+bjn18duOag9YSIzbPMSztVAgTfDqtrw3LNG0mjveDIoowtm9HBzZvAvwMwkmt3qhVWIlVFWtlEs8Q9Wt6bNaohg0g/fDarMxeazOS2gmbtbAaE6Hziuc9rFod7LEpBBv67JyBoykvZScL1Q5ce09fy9kJAD0RnJtG8CCV8bRbh5flLR5pBj0HM4WqLmuM=
+    on:
+      tags: true
+      repo: yannickebongue/ngx-material-time-select
+      all_branches: true
+  - provider: pages
+    skip_cleanup: true
+    github_token: "$GITHUB_TOKEN"
+    local_dir: dist/docs
+    on:
+      tags: true
+      repo: yannickebongue/ngx-material-time-select
+      all_branches: true

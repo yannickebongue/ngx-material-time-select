@@ -1,0 +1,6 @@
+@import "../lib/time-select.component-theme";
+@import "../typography/all-typography";
+
+@mixin ngx-material-time-select-theme($theme) {
+  @include mat-time-select-theme($theme);
+}

@@ -1,0 +1,19 @@
+mat-time-unit-select {
+  display: block;
+  height: 100%;
+
+  .mat-time-unit-select-carousel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+  }
+
+  .mat-time-unit-select-mask {
+    flex: auto;
+    max-height: 120px;
+    width: 100%;
+    overflow: hidden;
+  }
+
+}

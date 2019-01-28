@@ -1,0 +1,88 @@
+@import "~@angular/material/theming";
+
+$mat-calendar-body-font-size: 13px !default;
+
+@mixin _mat-time-unit-option-theme($theme) {
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+
+  .mat-time-unit-option {
+    color: mat-color($foreground, text);
+
+    &.mat-time-unit-option-disabled {
+      color: mat-color($foreground, hint-text);
+    }
+  }
+
+  .mat-primary {
+    .mat-time-unit-option.mat-time-unit-option-selected:not(.mat-time-unit-option-disabled), .mat-time-unit-separator {
+      color: mat-color($primary);
+    }
+  }
+
+  .mat-accent {
+    .mat-time-unit-option.mat-time-unit-option-selected:not(.mat-time-unit-option-disabled), .mat-time-unit-separator {
+      color: mat-color($accent);
+    }
+  }
+
+  .mat-warn {
+    .mat-time-unit-option.mat-time-unit-option-selected:not(.mat-time-unit-option-disabled), .mat-time-unit-separator {
+      color: mat-color($warn);
+    }
+  }
+}
+
+@mixin mat-time-select-theme($theme) {
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+
+  .mat-time-select-toggle,
+  .mat-time-select-content .mat-time-select-arrow {
+    color: mat-color($foreground, icon);
+  }
+
+  .mat-time-select-content {
+    @include _mat-theme-elevation(4, $theme);
+    background-color: mat-color($background, card);
+    color: mat-color($foreground, text);
+
+    @include _mat-time-unit-option-theme($theme);
+  }
+
+  .mat-time-select-content-touch {
+    @include _mat-theme-elevation(0, $theme);
+  }
+
+  .mat-time-select-toggle-active {
+    color: mat-color(map-get($theme, primary));
+
+    &.mat-accent {
+      color: mat-color(map-get($theme, accent));
+    }
+
+    &.mat-warn {
+      color: mat-color(map-get($theme, warn));
+    }
+  }
+}
+
+@mixin mat-time-select-typography($config) {
+  .mat-time-select-table {
+    font-family: mat-font-family($config);
+
+    tbody {
+      font-size: $mat-calendar-body-font-size;
+    }
+
+    .mat-time-unit-option, .mat-time-unit-separator {
+      font: {
+        family: mat-font-family($config);
+        size: mat-font-size($config, subheading-2);
+      }
+    }
+  }
+}

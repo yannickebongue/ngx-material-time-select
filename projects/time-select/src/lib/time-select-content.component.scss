@@ -1,0 +1,67 @@
+.mat-time-select-content {
+  display: block;
+  border-radius: 4px;
+
+  .mat-time-select-table {
+    border-collapse: collapse;
+    //height: 200px;
+  }
+
+  .mat-time-select-column {
+    width: 80px;
+    padding: 0;
+
+    .mat-time-unit-select-panel {
+      position: relative;
+    }
+
+  }
+
+  .mat-time-select-hour {
+
+    .mat-time-unit-select-panel {
+      top: -440px;
+    }
+
+  }
+
+  .mat-time-select-minute {
+
+    .mat-time-unit-select-panel {
+      top: -1160px;
+    }
+
+  }
+
+  .mat-time-select-second {
+
+    .mat-time-unit-select-panel {
+      top: -1160px;
+    }
+
+  }
+
+  .mat-time-select-separator {
+    text-align: center;
+
+    .mat-time-unit-separator {
+      display: inline-flex;
+      flex-direction: row;
+      align-items: center;
+      box-sizing: border-box;
+      padding: 0 16px;
+      height: 40px;
+      width: 100%;
+    }
+
+    .mat-time-unit-separator-text {
+      width: 100%;
+    }
+
+  }
+
+  .mat-time-ampm {
+    text-align: center;
+  }
+
+}

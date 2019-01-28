@@ -1,0 +1,9 @@
+<div class="mat-time-unit-option-content">
+  <div mat-ripple
+       class="mat-time-unit-option-ripple"
+       [matRippleTrigger]="_getHostElement()"
+       [matRippleDisabled]="_isRippleDisabled()"></div>
+  <div #text class="mat-time-unit-option-text">
+    <ng-content></ng-content>
+  </div>
+</div>
