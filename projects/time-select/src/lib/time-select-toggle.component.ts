@@ -34,7 +34,7 @@ export class MatTimeSelectToggleIconDirective {}
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MatTimeSelectToggleComponent implements AfterContentInit, OnChanges, OnDestroy {
+export class MatTimeSelectToggleComponent<D> implements AfterContentInit, OnChanges, OnDestroy {
 
   private _stateChanges = Subscription.EMPTY;
 
@@ -42,7 +42,7 @@ export class MatTimeSelectToggleComponent implements AfterContentInit, OnChanges
   private _disableRipple: boolean;
 
   /** Timepicker instance that the button will toggle. */
-  @Input('for') timeSelect: MatTimeSelectComponent;
+  @Input('for') timeSelect: MatTimeSelectComponent<D>;
   /** Tabindex for the toggle. */
   @Input() tabIndex: number | null;
 

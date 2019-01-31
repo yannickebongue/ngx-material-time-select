@@ -56,9 +56,9 @@ export const MAT_TIME_SELECT_SCROLL_STRATEGY_FACTORY_PROVIDER: Provider = {
   useFactory: MAT_TIME_SELECT_SCROLL_STRATEGY_FACTORY
 };
 
-export interface MatTimeSelectData {
+export interface MatTimeSelectData<D> {
   units?: unitOfTime.All[];
-  value?: Moment;
+  value?: D;
 }
 
 /** @docs-private */
@@ -83,7 +83,7 @@ export const _MatTimeSelectContentMixinBase: CanColorCtor & typeof MatTimeSelect
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MatTimeSelectContentComponent extends _MatTimeSelectContentMixinBase implements CanColor {
+export class MatTimeSelectContentComponent<D> extends _MatTimeSelectContentMixinBase implements CanColor {
 
   /** @docs-private */
   @Input() color: ThemePalette;
@@ -96,7 +96,7 @@ export class MatTimeSelectContentComponent extends _MatTimeSelectContentMixinBas
   @Output() valueChange: EventEmitter<Moment> = new EventEmitter<Moment>();
 
   /** Reference to the internal time unit select components. */
-  @ViewChildren(MatTimeUnitSelectComponent) timeUnitSelectComponents: QueryList<MatTimeUnitSelectComponent>;
+  @ViewChildren(MatTimeUnitSelectComponent) timeUnitSelectComponents: QueryList<MatTimeUnitSelectComponent<D>>;
 
   /** @docs-private */
   @HostBinding('class') readonly class = 'mat-time-select-content';
@@ -119,16 +119,16 @@ export class MatTimeSelectContentComponent extends _MatTimeSelectContentMixinBas
 
   constructor(elementRef: ElementRef,
               public _intl: MatTimeSelectIntl,
-              private _timeAdapter: TimeAdapter,
-              @Inject(MAT_TIME_FORMATS) private _timeFormats: MatTimeFormats,
-              @Optional() @Inject(MAT_TIME_SELECT_DATA) data: MatTimeSelectData) {
+              @Optional() private _timeAdapter: TimeAdapter<D>,
+              @Optional() @Inject(MAT_TIME_SELECT_DATA) data: MatTimeSelectData<D>) {
     super(elementRef);
     const time = this._timeAdapter.isDateInstance(data.value) && this._timeAdapter.isValid(data.value) ?
       this._timeAdapter.clone(data.value) : this._timeAdapter.now();
-    const localeData = time.localeData();
-    const displayFormat = localeData.longDateFormat(this._timeFormats.display.timeInput);
+    const value = this._timeAdapter.toMoment(time);
+    const localeData = value.localeData();
+    const displayFormat = localeData.longDateFormat('LTS');
     this.hourClock = /hh?/g.test(displayFormat) ? 12 : 24;
-    this.value = time;
+    this.value = value;
     this.units = data.units || ['hour', 'minute'];
   }
 
@@ -161,33 +161,33 @@ export class MatTimeSelectContentComponent extends _MatTimeSelectContentMixinBas
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MatTimeSelectComponent implements OnDestroy, CanColor {
+export class MatTimeSelectComponent<D> implements OnDestroy, CanColor {
 
   /** Subscription to value changes in the associated input element. */
   private _inputSubscription = Subscription.EMPTY;
 
-  private _startAt: Moment | null;
+  private _startAt: D | null;
   private _color: ThemePalette;
   private _disabled: boolean;
-  private _selected: Moment;
+  private _selected: D;
   private _opened = false;
 
   private _disabledChange: Subject<boolean> = new Subject<boolean>();
-  private _selectedChange: Subject<Moment> = new Subject<Moment>();
+  private _selectedChange: Subject<D> = new Subject<D>();
 
   /** A reference to the overlay when the time select is opened as a popup. */
   private _popupRef: OverlayRef;
   /** A portal containing the popup for this time select. */
-  private _popupComponentPortal: ComponentPortal<MatTimeSelectContentComponent>;
+  private _popupComponentPortal: ComponentPortal<MatTimeSelectContentComponent<D>>;
   /** Reference to the component instantiated in popup mode. */
-  private _popupComponentRef: ComponentRef<MatTimeSelectContentComponent>;
+  private _popupComponentRef: ComponentRef<MatTimeSelectContentComponent<D>>;
   /** The element that was focused before the time select was opened. */
   private _focusedElementBeforeOpen: HTMLElement | null = null;
 
   private readonly _scrollStrategy: () => ScrollStrategy;
 
   /** The input element this time select is associated with. */
-  _timeSelectInput: MatTimeSelectInputDirective;
+  _timeSelectInput: MatTimeSelectInputDirective<D>;
 
   /** Emits when the time select has been opened. */
   @Output('open') openStream: EventEmitter<void> = new EventEmitter<void>();
@@ -199,8 +199,8 @@ export class MatTimeSelectComponent implements OnDestroy, CanColor {
 
   /** The initial time of the time select. */
   @Input()
-  get startAt(): Moment | null { return this._startAt || (this._timeSelectInput ? this._timeSelectInput.value : null); }
-  set startAt(value: Moment | null) { this._startAt = this._getValidDateOrNull(this._timeAdapter.deserialize(value)); }
+  get startAt(): D | null { return this._startAt || (this._timeSelectInput ? this._timeSelectInput.value : null); }
+  set startAt(value: D | null) { this._startAt = this._getValidDateOrNull(this._timeAdapter.deserialize(value)); }
 
   /** The color palette to use on the time select popup. */
   @Input()
@@ -222,8 +222,8 @@ export class MatTimeSelectComponent implements OnDestroy, CanColor {
 
   /** The currently selected time. */
   @Input()
-  get selected(): Moment { return this._selected; }
-  set selected(value: Moment) { this._selected = value; }
+  get selected(): D { return this._selected; }
+  set selected(value: D) { this._selected = value; }
 
   /** Whether the time select is opened. */
   @Input()
@@ -233,14 +233,14 @@ export class MatTimeSelectComponent implements OnDestroy, CanColor {
   /** Emits when the time select disabled state has been changed. */
   get disabledChange(): Observable<boolean> { return this._disabledChange.asObservable(); }
   /** Emits when the time select selected time has been changed. */
-  get selectedChange(): Observable<Moment> { return this._selectedChange.asObservable(); }
+  get selectedChange(): Observable<D> { return this._selectedChange.asObservable(); }
 
   constructor(private _overlay: Overlay,
               private _injector: Injector,
               private _ngZone: NgZone,
               private _viewContainerRef: ViewContainerRef,
-              private _timeAdapter: TimeAdapter,
               @Inject(MAT_TIME_SELECT_SCROLL_STRATEGY) scrollStrategy: any,
+              @Optional() private _timeAdapter: TimeAdapter<D>,
               @Optional() private _dir: Directionality,
               @Optional() @Inject(DOCUMENT) private _document: any) {
     this._scrollStrategy = scrollStrategy;
@@ -261,7 +261,7 @@ export class MatTimeSelectComponent implements OnDestroy, CanColor {
    * Selects the given time.
    * @param time The date time to select.
    */
-  select(time: Moment) {
+  select(time: D) {
     const oldValue = this.selected;
     const value = this._timeAdapter.clone(time);
     this.selected = value;
@@ -274,12 +274,12 @@ export class MatTimeSelectComponent implements OnDestroy, CanColor {
    * Register an input with this time select.
    * @param input The time select input to register with this time select.
    */
-  registerInput(input: MatTimeSelectInputDirective) {
+  registerInput(input: MatTimeSelectInputDirective<D>) {
     if (this._timeSelectInput) {
       throw Error('A MatTimeSelect can only be associated with a single input.');
     }
     this._timeSelectInput = input;
-    this._inputSubscription = this._timeSelectInput.valueChange.subscribe((value: Moment | null) => this.selected = value);
+    this._inputSubscription = this._timeSelectInput.valueChange.subscribe((value: D | null) => this.selected = value);
   }
 
   /** Open the time select. */
@@ -336,7 +336,7 @@ export class MatTimeSelectComponent implements OnDestroy, CanColor {
 
   /** Open the time select as a popup. */
   private _openAsPopup(): void {
-    this._popupComponentPortal = new ComponentPortal<MatTimeSelectContentComponent>(
+    this._popupComponentPortal = new ComponentPortal<MatTimeSelectContentComponent<D>>(
       MatTimeSelectContentComponent,
       this._viewContainerRef,
       this._createInjector()
@@ -348,7 +348,9 @@ export class MatTimeSelectComponent implements OnDestroy, CanColor {
 
     if (!this._popupRef.hasAttached()) {
       this._popupComponentRef = this._popupRef.attach(this._popupComponentPortal);
-      this._popupComponentRef.instance.valueChange.subscribe((value: Moment) => this.select(value));
+      this._popupComponentRef.instance.valueChange.subscribe(
+        (value: Moment) => this.select(this._timeAdapter.deserialize(value.toISOString()))
+      );
       this._setColor();
 
       // Update the position once the select panel has rendered.
@@ -360,7 +362,7 @@ export class MatTimeSelectComponent implements OnDestroy, CanColor {
 
   /** Create a portal injector to inject time select initial data. */
   private _createInjector(): PortalInjector {
-    const data: MatTimeSelectData = {
+    const data: MatTimeSelectData<D> = {
       value: this.startAt
     };
     const injectorTokens = new WeakMap<any, any>([
@@ -434,7 +436,7 @@ export class MatTimeSelectComponent implements OnDestroy, CanColor {
    * @param obj The object to check.
    * @returns The given object if it is both a date instance and valid, otherwise null.
    */
-  private _getValidDateOrNull(obj: any): Moment | null {
+  private _getValidDateOrNull(obj: any): D | null {
     return this._timeAdapter.isDateInstance(obj) && this._timeAdapter.isValid(obj) ? obj : null;
   }
 

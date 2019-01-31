@@ -25,7 +25,7 @@ import {MAT_TIME_FORMATS, MatTimeFormats} from './time-formats';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MatTimeUnitSelectComponent implements AfterViewInit, OnInit {
+export class MatTimeUnitSelectComponent<D> implements AfterViewInit, OnInit {
 
   private _originTop: number;
 
@@ -44,26 +44,27 @@ export class MatTimeUnitSelectComponent implements AfterViewInit, OnInit {
   @ViewChild('panel') panel: ElementRef<HTMLElement>;
 
   constructor(private _changeDetectorRef: ChangeDetectorRef,
-              private _timeAdapter: TimeAdapter,
+              private _timeAdapter: TimeAdapter<D>,
               @Inject(MAT_TIME_FORMATS) private _timeFormats: MatTimeFormats) { }
 
   ngOnInit() {
     const unit = this.unit;
     const time = this._timeAdapter.createTime();
-    const start = this._timeAdapter.clone(time).startOf('day');
-    const end = this._timeAdapter.clone(time).endOf('day');
+    const moment = this._timeAdapter.toMoment(time);
+    const start = moment.clone().startOf('day');
+    const end = moment.clone().endOf('day');
     const min = start.get(unit);
     const max = end.get(unit);
-    const localeData = time.localeData();
-    const displayFormat = localeData.longDateFormat(this._timeFormats.display.timeInput);
+    const localeData = moment.localeData();
+    const displayFormat = localeData.longDateFormat('LTS');
     const unitFormat = unit === 'hour' ?
       displayFormat.match(/hh?|HH?/g)[0] : unit === 'minute' ?
         displayFormat.match(/mm?/g)[0] : displayFormat.match(/ss?/g)[0];
-    time.set(unit, this.value);
-    time.subtract(1 as DurationInputArg1, unit as DurationInputArg2);
+    moment.set(unit, this.value);
+    moment.subtract(1 as DurationInputArg1, unit as DurationInputArg2);
     for (let value = min; value <= max; value++) {
-      time.add(1 as DurationInputArg1, unit as DurationInputArg2);
-      this.options.push({value: time.get(unit), label: time.format(unitFormat)});
+      moment.add(1 as DurationInputArg1, unit as DurationInputArg2);
+      this.options.push({value: moment.get(unit), label: moment.format(unitFormat)});
     }
   }
 
