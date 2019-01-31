@@ -11,3 +11,6 @@ export * from './lib/time-select.component';
 export * from './lib/time-select-input.directive';
 export * from './lib/time-select-toggle.component';
 export * from './lib/time-select.module';
+export * from './lib/moment-time-adapter.service';
+export * from './lib/moment-time-formats';
+export * from './lib/moment-time.module';
