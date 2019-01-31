@@ -29,8 +29,8 @@ import {CanColor, CanColorCtor, mixinColor, ThemePalette} from '@angular/materia
 import {merge, Observable, Subject, Subscription} from 'rxjs';
 import {filter, take} from 'rxjs/operators';
 import {Moment, unitOfTime} from 'moment';
-import {MAT_TIME_FORMATS, MatTimeFormats} from './time-formats';
 import {TimeAdapter} from './time-adapter.service';
+import {createMissingTimeImplError} from './time-select-errors';
 import {MatTimeSelectIntl} from './time-select-intl.service';
 import {MatTimeSelectInputDirective} from './time-select-input.directive';
 import {MatTimeUnitSelectComponent} from './time-unit-select.component';
@@ -122,6 +122,11 @@ export class MatTimeSelectContentComponent<D> extends _MatTimeSelectContentMixin
               @Optional() private _timeAdapter: TimeAdapter<D>,
               @Optional() @Inject(MAT_TIME_SELECT_DATA) data: MatTimeSelectData<D>) {
     super(elementRef);
+
+    if (!this._timeAdapter) {
+      throw createMissingTimeImplError('TimeAdapter');
+    }
+
     const time = this._timeAdapter.isDateInstance(data.value) && this._timeAdapter.isValid(data.value) ?
       this._timeAdapter.clone(data.value) : this._timeAdapter.now();
     const value = this._timeAdapter.toMoment(time);
@@ -243,6 +248,10 @@ export class MatTimeSelectComponent<D> implements OnDestroy, CanColor {
               @Optional() private _timeAdapter: TimeAdapter<D>,
               @Optional() private _dir: Directionality,
               @Optional() @Inject(DOCUMENT) private _document: any) {
+    if (!this._timeAdapter) {
+      throw createMissingTimeImplError('TimeAdapter');
+    }
+
     this._scrollStrategy = scrollStrategy;
   }
 
