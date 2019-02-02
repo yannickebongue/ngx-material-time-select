@@ -1,6 +1,6 @@
 import {Inject, Injectable, Optional} from '@angular/core';
-import {DateAdapter} from '@angular/material';
-import {MAT_TIME_LOCALE, TimeAdapter} from './time-adapter.service';
+import {DateAdapter, MAT_DATE_LOCALE} from '@angular/material';
+import {TimeAdapter} from './time-adapter.service';
 import {Moment} from 'moment';
 
 import * as _moment from 'moment';
@@ -11,7 +11,7 @@ const moment = _moment;
 @Injectable()
 export class MomentTimeAdapter extends TimeAdapter<Moment> {
 
-  constructor(@Optional() @Inject(MAT_TIME_LOCALE) locale: string,
+  constructor(@Optional() @Inject(MAT_DATE_LOCALE) locale: string,
               @Optional() private _dateAdapter: DateAdapter<Moment>) {
     super();
     this.setLocale(locale || moment.locale());

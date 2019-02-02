@@ -1,12 +1,5 @@
-import {InjectionToken, LOCALE_ID, Provider} from '@angular/core';
 import {DateAdapter} from '@angular/material';
 import {Moment} from 'moment';
-
-/** InjectionToken for time select that can be used to override default locale code. */
-export const MAT_TIME_LOCALE: InjectionToken<string> = new InjectionToken<string>('MAT_TIME_LOCALE');
-
-/** @docs-private */
-export const MAT_TIME_LOCALE_PROVIDER: Provider = {provide: MAT_TIME_LOCALE, useExisting: LOCALE_ID};
 
 /** Adapts date object to be usable as a date time by cdk-based components that work with dates. */
 export abstract class TimeAdapter<D> extends DateAdapter<D> {
