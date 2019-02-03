@@ -19,10 +19,10 @@
       "dom"
     ],
     "paths": {
-      "time-select": [
+      "ngx-material-time-select": [
         "dist/time-select"
       ],
-      "time-select/*": [
+      "ngx-material-time-select/*": [
         "dist/time-select/*"
       ]
     }
