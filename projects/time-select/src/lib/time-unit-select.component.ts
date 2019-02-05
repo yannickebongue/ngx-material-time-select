@@ -33,6 +33,10 @@ export class MatTimeUnitSelectComponent<D> implements AfterViewInit, OnInit {
   @Input() value: number;
   /** The unit of time of the time select. */
   @Input() unit: unitOfTime.All;
+  /** The minimum selectable value. */
+  @Input() min: number | null;
+  /** The maximum selectable value. */
+  @Input() max: number | null;
 
   /** The list of all values of the time select. */
   options: {value: number; label: string}[] = [];
@@ -118,6 +122,28 @@ export class MatTimeUnitSelectComponent<D> implements AfterViewInit, OnInit {
 
     element.style.transition = 'transform 0.5s';
     element.style.transform = `translateY(${y}px)`;
+  }
+
+  /**
+   * Gets the previous option value.
+   */
+  getPrev(): number {
+    return this.options[(this.options.length / 2) - 1].value;
+  }
+
+  /**
+   * Gets the next option value.
+   */
+  getNext(): number {
+    return this.options[(this.options.length / 2) + 1].value;
+  }
+
+  /**
+   * Whether the given value is valid.
+   * @param value The value to check.
+   */
+  isValid(value: number): boolean {
+    return (this.min === null || value >= this.min) && (this.max === null || value <= this.max);
   }
 
 }

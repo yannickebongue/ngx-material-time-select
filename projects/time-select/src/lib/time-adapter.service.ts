@@ -55,7 +55,8 @@ export abstract class TimeAdapter<D> extends DateAdapter<D> {
    *     a number greater than 0 if the first date time is later.
    */
   compareTime(first: D, second: D): number {
-    return this.getHour(first) - this.getHour(second) ||
+    return this.compareDate(first, second) ||
+      this.getHour(first) - this.getHour(second) ||
       this.getMinute(first) - this.getMinute(second) ||
       this.getSecond(first) - this.getSecond(second);
   }

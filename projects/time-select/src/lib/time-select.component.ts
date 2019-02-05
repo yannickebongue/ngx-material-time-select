@@ -28,7 +28,7 @@ import {ComponentPortal, PortalInjector} from '@angular/cdk/portal';
 import {CanColor, CanColorCtor, mixinColor, ThemePalette} from '@angular/material';
 import {merge, Observable, Subject, Subscription} from 'rxjs';
 import {filter, take} from 'rxjs/operators';
-import {Moment, unitOfTime} from 'moment';
+import {DurationInputArg1, DurationInputArg2, Moment, unitOfTime} from 'moment';
 import {TimeAdapter} from './time-adapter.service';
 import {createMissingTimeImplError} from './time-select-errors';
 import {MatTimeSelectIntl} from './time-select-intl.service';
@@ -59,6 +59,8 @@ export const MAT_TIME_SELECT_SCROLL_STRATEGY_FACTORY_PROVIDER: Provider = {
 export interface MatTimeSelectData<D> {
   units?: unitOfTime.All[];
   value?: D;
+  minTime?: D;
+  maxTime?: D;
 }
 
 /** @docs-private */
@@ -91,6 +93,10 @@ export class MatTimeSelectContentComponent<D> extends _MatTimeSelectContentMixin
   @Input() units: unitOfTime.All[];
   /** The currently selected time of the time select content. */
   @Input() value: Moment;
+  /** The minimum selectable time. */
+  @Input() minTime: Moment;
+  /** The minimum selectable time. */
+  @Input() maxTime: Moment;
 
   /** Emits when the time select content selected time has been changed. */
   @Output() valueChange: EventEmitter<Moment> = new EventEmitter<Moment>();
@@ -129,12 +135,14 @@ export class MatTimeSelectContentComponent<D> extends _MatTimeSelectContentMixin
 
     const time = this._timeAdapter.isDateInstance(data.value) && this._timeAdapter.isValid(data.value) ?
       this._timeAdapter.clone(data.value) : this._timeAdapter.now();
-    const value = this._timeAdapter.toMoment(time);
+    const value = this._timeAdapter.toMoment(this._timeAdapter.clampTime(time, data.minTime, data.maxTime));
     const localeData = value.localeData();
     const displayFormat = localeData.longDateFormat('LTS');
     this.hourClock = /hh?/g.test(displayFormat) ? 12 : 24;
     this.value = value;
     this.units = data.units || ['hour', 'minute'];
+    this.minTime = data.minTime ? this._timeAdapter.toMoment(data.minTime) : null;
+    this.maxTime = data.maxTime ? this._timeAdapter.toMoment(data.maxTime) : null;
   }
 
   /**
@@ -154,6 +162,87 @@ export class MatTimeSelectContentComponent<D> extends _MatTimeSelectContentMixin
   set(unit: unitOfTime.All, value: number) {
     this.value.set(unit, value);
     this.valueChange.emit(this.value);
+  }
+
+  /**
+   * Gets the minimum allowed value of the given unit of time.
+   * @param unit The unit of time to query.
+   * @returns The minimum value.
+   */
+  getMin(unit: unitOfTime.All): number | null {
+    let min = null;
+    if (this.minTime && this.value.isSame(this.minTime, 'day')) {
+      if (this.getPrev(unit).isBefore(this.minTime)) {
+        min = this.value.get(unit);
+      }
+    }
+    return min;
+  }
+
+  /**
+   * Gets the maximum allowed value of the given unit of time.
+   * @param unit The unit of time to query.
+   * @returns The maximum value.
+   */
+  getMax(unit: unitOfTime.All): number | null {
+    let max = null;
+    if (this.maxTime && this.value.isSame(this.maxTime, 'day')) {
+      if (this.getNext(unit).isAfter(this.maxTime)) {
+        max = this.value.get(unit);
+      }
+    }
+    return max;
+  }
+
+  /**
+   * Gets the value after moving up the given unit of time.
+   * @param unit The unit of time to move.
+   * @returns The new value.
+   */
+  getPrev(unit: unitOfTime.All): Moment {
+    const prev = this.value.clone().subtract(1 as DurationInputArg1, unit as DurationInputArg2);
+    return this.value.clone().set(unit, prev.get(unit));
+  }
+
+  /**
+   * Gets the value after moving down the given unit of time.
+   * @param unit The unit of time to move.
+   * @returns The new value.
+   */
+  getNext(unit: unitOfTime.All): Moment {
+    const next = this.value.clone().add(1 as DurationInputArg1, unit as DurationInputArg2);
+    return this.value.clone().set(unit, next.get(unit));
+  }
+
+  /**
+   * Gets the value before midday.
+   */
+  getAM(): Moment {
+    if (this.value.hour() >= 12) {
+      return this.value.clone().subtract(12, 'hour');
+    }
+    return this.value;
+  }
+
+  /**
+   * Gets the value after midday.
+   */
+  getPM(): Moment {
+    if (this.value.hour() < 12) {
+      return this.value.clone().add(12, 'hour');
+    }
+    return this.value;
+  }
+
+  /**
+   * Whether the given value is selectable.
+   * @param value The value to check.
+   * @returns `true` if the value is valid. Otherwise `false`.
+   */
+  isValid(value: Moment): boolean {
+    const beforeMin = this.minTime && value.isBefore(this.minTime);
+    const afterMax = this.maxTime && value.isAfter(this.maxTime);
+    return !(beforeMin || afterMax);
   }
 
 }
@@ -372,7 +461,9 @@ export class MatTimeSelectComponent<D> implements OnDestroy, CanColor {
   /** Create a portal injector to inject time select initial data. */
   private _createInjector(): PortalInjector {
     const data: MatTimeSelectData<D> = {
-      value: this.startAt
+      value: this.startAt,
+      minTime: this._timeSelectInput && this._timeSelectInput.min,
+      maxTime: this._timeSelectInput && this._timeSelectInput.max
     };
     const injectorTokens = new WeakMap<any, any>([
       [MAT_TIME_SELECT_DATA, data]

@@ -101,15 +101,10 @@ export class MatTimeUnitOptionComponent<D> extends _MatTimeUnitOptionMixinBase i
     return this.disabled || this.disableRipple;
   }
 
-  /** @docs-private */
-  _markForCheck() {
-    this._changeDetectorRef.markForCheck();
-  }
-
   /** Handle click on the option. */
   @HostListener('click')
   _onClick() {
-    if (!this.selected) {
+    if (!this.disabled) {
       this.timeUnitSelect.move(this.value - this.timeUnitSelect.value);
     }
   }
