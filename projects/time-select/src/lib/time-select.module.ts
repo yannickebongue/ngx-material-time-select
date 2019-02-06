@@ -5,7 +5,6 @@ import {OverlayModule} from '@angular/cdk/overlay';
 import {PortalModule} from '@angular/cdk/portal';
 import {MatButtonModule, MatButtonToggleModule, MatIconModule, MatRippleModule} from '@angular/material';
 
-import {MAT_TIME_LOCALE_PROVIDER, TimeAdapter} from './time-adapter.service';
 import {MatTimeSelectIntl} from './time-select-intl.service';
 
 import {
@@ -51,9 +50,7 @@ import {MatTimeUnitSelectComponent} from './time-unit-select.component';
     MatTimeSelectContentComponent
   ],
   providers: [
-    TimeAdapter,
     MatTimeSelectIntl,
-    MAT_TIME_LOCALE_PROVIDER,
     MAT_TIME_SELECT_SCROLL_STRATEGY_FACTORY_PROVIDER
   ]
 })

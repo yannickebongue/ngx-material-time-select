@@ -10,19 +10,4 @@ export interface MatTimeFormats {
   };
 }
 
-export const MAT_TIME_FORMATS = new InjectionToken<MatTimeFormats>('mat-time-formats', {
-  providedIn: 'root',
-  factory: MAT_TIME_FORMATS_FACTORY
-});
-
-export function MAT_TIME_FORMATS_FACTORY(): MatTimeFormats {
-  return {
-    parse: {
-      timeInput: 'LT'
-    },
-    display: {
-      timeInput: 'LT',
-      timeA11yLabel: 'LT'
-    }
-  };
-}
+export const MAT_TIME_FORMATS = new InjectionToken<MatTimeFormats>('mat-time-formats');

@@ -1,8 +1,8 @@
 const { dest, series, src } = require('gulp');
 const run = require('gulp-run');
 
-const css = require('./gulp-tasks/css').css;
-const theming = require('./gulp-tasks/theming').theming;
+const { css } = require('./gulp-tasks/css');
+const { theming } = require('./gulp-tasks/theming');
 const compodoc = require('./gulp-tasks/compodoc');
 
 const lib = 'time-select';
