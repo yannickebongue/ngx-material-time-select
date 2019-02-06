@@ -1,0 +1,19 @@
+.mat-toolbar {
+  position: sticky;
+  top: 0;
+
+  h1 { flex: auto; }
+
+}
+
+.demo-content {
+  width: 100%;
+  height: 100%;
+  padding: 32px;
+  box-sizing: border-box;
+}
+
+.demo-container {
+  width: 100%;
+  height: 100%;
+}

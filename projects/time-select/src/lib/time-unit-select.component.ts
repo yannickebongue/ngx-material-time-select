@@ -25,7 +25,7 @@ import {MAT_TIME_FORMATS, MatTimeFormats} from './time-formats';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MatTimeUnitSelectComponent implements AfterViewInit, OnInit {
+export class MatTimeUnitSelectComponent<D> implements AfterViewInit, OnInit {
 
   private _originTop: number;
 
@@ -33,6 +33,10 @@ export class MatTimeUnitSelectComponent implements AfterViewInit, OnInit {
   @Input() value: number;
   /** The unit of time of the time select. */
   @Input() unit: unitOfTime.All;
+  /** The minimum selectable value. */
+  @Input() min: number | null;
+  /** The maximum selectable value. */
+  @Input() max: number | null;
 
   /** The list of all values of the time select. */
   options: {value: number; label: string}[] = [];
@@ -44,26 +48,27 @@ export class MatTimeUnitSelectComponent implements AfterViewInit, OnInit {
   @ViewChild('panel') panel: ElementRef<HTMLElement>;
 
   constructor(private _changeDetectorRef: ChangeDetectorRef,
-              private _timeAdapter: TimeAdapter,
+              private _timeAdapter: TimeAdapter<D>,
               @Inject(MAT_TIME_FORMATS) private _timeFormats: MatTimeFormats) { }
 
   ngOnInit() {
     const unit = this.unit;
     const time = this._timeAdapter.createTime();
-    const start = this._timeAdapter.clone(time).startOf('day');
-    const end = this._timeAdapter.clone(time).endOf('day');
+    const moment = this._timeAdapter.toMoment(time);
+    const start = moment.clone().startOf('day');
+    const end = moment.clone().endOf('day');
     const min = start.get(unit);
     const max = end.get(unit);
-    const localeData = time.localeData();
-    const displayFormat = localeData.longDateFormat(this._timeFormats.display.timeInput);
+    const localeData = moment.localeData();
+    const displayFormat = localeData.longDateFormat('LTS');
     const unitFormat = unit === 'hour' ?
       displayFormat.match(/hh?|HH?/g)[0] : unit === 'minute' ?
         displayFormat.match(/mm?/g)[0] : displayFormat.match(/ss?/g)[0];
-    time.set(unit, this.value);
-    time.subtract(1 as DurationInputArg1, unit as DurationInputArg2);
+    moment.set(unit, this.value);
+    moment.subtract(1 as DurationInputArg1, unit as DurationInputArg2);
     for (let value = min; value <= max; value++) {
-      time.add(1 as DurationInputArg1, unit as DurationInputArg2);
-      this.options.push({value: time.get(unit), label: time.format(unitFormat)});
+      moment.add(1 as DurationInputArg1, unit as DurationInputArg2);
+      this.options.push({value: moment.get(unit), label: moment.format(unitFormat)});
     }
   }
 
@@ -117,6 +122,28 @@ export class MatTimeUnitSelectComponent implements AfterViewInit, OnInit {
 
     element.style.transition = 'transform 0.5s';
     element.style.transform = `translateY(${y}px)`;
+  }
+
+  /**
+   * Gets the previous option value.
+   */
+  getPrev(): number {
+    return this.options[(this.options.length / 2) - 1].value;
+  }
+
+  /**
+   * Gets the next option value.
+   */
+  getNext(): number {
+    return this.options[(this.options.length / 2) + 1].value;
+  }
+
+  /**
+   * Whether the given value is valid.
+   * @param value The value to check.
+   */
+  isValid(value: number): boolean {
+    return (this.min === null || value >= this.min) && (this.max === null || value <= this.max);
   }
 
 }

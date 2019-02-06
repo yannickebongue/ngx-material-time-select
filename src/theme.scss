@@ -1,0 +1,26 @@
+@import "~projects/time-select/src/theming/all-theme";
+
+$config: mat-typography-config();
+
+@include mat-core($config);
+@include ngx-material-time-select-typography($config);
+
+// Default theme
+$indigo-pink-primary: mat-palette($mat-indigo);
+$indigo-pink-accent:  mat-palette($mat-pink, A200, A100, A400);
+
+$indigo-pink-theme: mat-light-theme($indigo-pink-primary, $indigo-pink-accent);
+
+@include angular-material-theme($indigo-pink-theme);
+@include ngx-material-time-select-theme($indigo-pink-theme);
+
+// Alternative theme
+$pink-blue-grey-primary: mat-palette($mat-pink, 700, 500, 900);
+$pink-blue-grey-accent:  mat-palette($mat-blue-grey, A200, A100, A400);
+
+$pink-blue-grey-theme: mat-dark-theme($pink-blue-grey-primary, $pink-blue-grey-accent);
+
+.dark-theme {
+  @include angular-material-theme($pink-blue-grey-theme);
+  @include ngx-material-time-select-theme($pink-blue-grey-theme);
+}

@@ -160,27 +160,77 @@ The select panel can be programmatically controlled using the `open` and `close`
 
 Internationalization of the time select is configured via three aspects:
  1. The time locale.
- 2. The display and parse formats used by the time select.
+ 2. The date implementation that the time select accepts.
+ 3. The display and parse formats used by the time select.
  4. The message strings used in the time select's UI.
 
 #### Setting the locale code
 
-By default, the `MAT_TIME_LOCALE` injection token will use the existing `LOCALE_ID` locale code
-from `@angular/core`. If you want to override it, you can provide a new value for the
-`MAT_TIME_LOCALE` token:
-
-```ts
-@NgModule({
-  providers: [
-    {provide: MAT_TIME_LOCALE, useValue: 'en-GB'},
-  ],
-})
-export class MyApp {}
-```
+The time select use the same injection token of the Datepicker from `@angular/material`.
+[See documentation](https://material.angular.io/components/datepicker/overview#setting-the-locale-code).
 
 It's also possible to set the locale at runtime using the `setLocale` method of the `TimeAdapter`.
 
 <!-- example(time-select-locale) -->
+
+#### Choosing a date implementation and date format settings
+
+The time select was built to be date implementation agnostic. This means that it can be made to work
+with a variety of different date implementations. However it also means that developers need to make
+sure to provide the appropriate pieces for the time select to work with their chosen implementation.
+The easiest way to ensure this is just to import one of the pre-made modules:
+
+|Module               |Date type|Supported locales                                                      |Dependencies                      |Import from               |
+|---------------------|---------|-----------------------------------------------------------------------|----------------------------------|--------------------------|
+|`MatNativeTimeModule`|`Date`   |en-US                                                                  |None                              |`ngx-material-time-select`|
+|`MatMomentTimeModule`|`Moment` |[See project](https://github.com/moment/moment/tree/develop/src/locale)|[Moment.js](https://momentjs.com/)|`ngx-material-time-select`|
+
+*Please note: `MatNativeTimeModule` is based off of the functionality available in JavaScript's
+native `Date` object, and is thus not suitable for many locales. One of the biggest shortcomings of
+the native `Date` object is the inability to set the parse format. We highly recommend using the
+`MomentTimeAdapter` or a custom `TimeAdapter` that works with the formatting/parsing library of your
+choice.*
+
+These modules include providers for `TimeAdapter` and `MAT_TIME_FORMATS`
+
+```ts
+@NgModule({
+  imports: [MatTimeSelectModule, MatNativeTimeModule],
+})
+export class MyApp {}
+```
+
+Because `TimeAdapter` is a generic class, `MatTimeSelectComponent` and `MatTimeSelectInputDirective`
+also need to be made generic. When working with these classes (for example as a `ViewChild`) you
+should include the appropriate generic type that corresponds to the `TimeAdapter` implementation
+you are using. For example:
+
+```ts
+@Component({...})
+export class MyComponent {
+  @ViewChild(MatTimeSelectComponent) timeSelect: MatTimeSelectComponent<Date>;
+}
+```
+
+<!-- example(time-select-moment) -->
+
+It is also possible to create your own `TimeAdapter` that works with any date format your app
+requires. This is accomplished by subclassing `TimeAdapter` and providing your subclass as the
+`TimeAdapter` implementation. You will also want to make sure that the `MAT_TIME_FORMATS` provided
+in your app are formats that can be understood by your date implementation. See
+[_Customizing the parse and display formats_](#customizing-the-parse-and-display-formats)for more
+information about `MAT_TIME_FORMATS`.
+
+```ts
+@NgModule({
+  imports: [MatTimeSelectModule],
+  providers: [
+    {provide: TimeAdapter, useClass: MyTimeAdapter},
+    {provide: MAT_TIME_FORMATS, useValue: MY_DATE_FORMATS},
+  ],
+})
+export class MyApp {}
+```
 
 #### Customizing the parse and display formats
 
@@ -236,6 +286,14 @@ The time select supports the following keyboard shortcuts:
 | `ESCAPE`             | Close the select panel pop-up             |
 
 ### Troubleshooting
+
+#### Error: MatTimeSelectComponent: No provider found for TimeAdapter/MAT_TIME_FORMATS
+
+This error is thrown if you have not provided all of the injectables the time select needs to work.
+The easiest way to resolve this is to import the `MatNativeTimeModule` or `MatMomentTimeModule` in
+your application's root module. See
+[_Choosing a date implementation_](#choosing-a-date-implementation-and-date-format-settings)) for
+more information.
 
 #### Error: A MatTimeSelectComponent can only be associated with a single input
 

@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { TimeAdapter } from './time-adapter.service';
+import { NativeTimeAdapter } from './native-time-adapter.service';
 
-describe('TimeAdapter', () => {
+describe('NativeTimeAdapter', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: TimeAdapter = TestBed.get(TimeAdapter);
+    const service: NativeTimeAdapter = TestBed.get(NativeTimeAdapter);
     expect(service).toBeTruthy();
   });
 });

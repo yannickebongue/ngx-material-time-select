@@ -28,7 +28,7 @@ export const _MatTimeUnitOptionMixinBase: CanDisableRippleCtor & typeof MatTimeU
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MatTimeUnitOptionComponent extends _MatTimeUnitOptionMixinBase implements OnInit {
+export class MatTimeUnitOptionComponent<D> extends _MatTimeUnitOptionMixinBase implements OnInit {
 
   private _disabled = false;
   private _selected = false;
@@ -78,7 +78,7 @@ export class MatTimeUnitOptionComponent extends _MatTimeUnitOptionMixinBase impl
 
   constructor(private _elementRef: ElementRef<HTMLElement>,
               private _changeDetectorRef: ChangeDetectorRef,
-              @Inject(forwardRef(() => MatTimeUnitSelectComponent)) public timeUnitSelect: MatTimeUnitSelectComponent) {
+              @Inject(forwardRef(() => MatTimeUnitSelectComponent)) public timeUnitSelect: MatTimeUnitSelectComponent<D>) {
     super();
   }
 
@@ -101,15 +101,10 @@ export class MatTimeUnitOptionComponent extends _MatTimeUnitOptionMixinBase impl
     return this.disabled || this.disableRipple;
   }
 
-  /** @docs-private */
-  _markForCheck() {
-    this._changeDetectorRef.markForCheck();
-  }
-
   /** Handle click on the option. */
   @HostListener('click')
   _onClick() {
-    if (!this.selected) {
+    if (!this.disabled) {
       this.timeUnitSelect.move(this.value - this.timeUnitSelect.value);
     }
   }

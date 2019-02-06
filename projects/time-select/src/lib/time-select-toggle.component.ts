@@ -21,7 +21,7 @@ import {merge, of, Subscription} from 'rxjs';
 import {MatTimeSelectIntl} from './time-select-intl.service';
 import {MatTimeSelectComponent} from './time-select.component';
 
-/** Can be used to override the icon of a `matTimepickerToggle`. */
+/** Can be used to override the icon of a `matTimeSelectToggle`. */
 @Directive({
   selector: '[matTimeSelectToggleIcon]'
 })
@@ -31,18 +31,19 @@ export class MatTimeSelectToggleIconDirective {}
   selector: 'mat-time-select-toggle',
   templateUrl: './time-select-toggle.component.html',
   styleUrls: ['./time-select-toggle.component.scss'],
+  exportAs: 'matTimeSelectToggle',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MatTimeSelectToggleComponent implements AfterContentInit, OnChanges, OnDestroy {
+export class MatTimeSelectToggleComponent<D> implements AfterContentInit, OnChanges, OnDestroy {
 
   private _stateChanges = Subscription.EMPTY;
 
   private _disabled: boolean;
   private _disableRipple: boolean;
 
-  /** Timepicker instance that the button will toggle. */
-  @Input('for') timeSelect: MatTimeSelectComponent;
+  /** Time select instance that the button will toggle. */
+  @Input('for') timeSelect: MatTimeSelectComponent<D>;
   /** Tabindex for the toggle. */
   @Input() tabIndex: number | null;
 
@@ -101,7 +102,7 @@ export class MatTimeSelectToggleComponent implements AfterContentInit, OnChanges
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.timepicker) {
+    if (changes.timeSelect) {
       this._watchStateChanges();
     }
   }
@@ -128,19 +129,20 @@ export class MatTimeSelectToggleComponent implements AfterContentInit, OnChanges
   }
 
   private _watchStateChanges() {
-    const datepickerDisabled = this.timeSelect ? this.timeSelect.disabledChange : of();
+    const timeSelectDisabled = this.timeSelect ? this.timeSelect.disabledChange : of();
     const inputDisabled = this.timeSelect && this.timeSelect._timeSelectInput ?
       this.timeSelect._timeSelectInput.disabledChange : of();
-    const datepickerToggled = this.timeSelect ?
+    const timeSelectToggled = this.timeSelect ?
       merge(this.timeSelect.openStream, this.timeSelect.closeStream) :
       of();
 
     this._stateChanges.unsubscribe();
     this._stateChanges = merge(
       this._intl.changes,
-      datepickerDisabled,
+      timeSelectDisabled,
       inputDisabled,
-      datepickerToggled
+      timeSelectToggled
     ).subscribe(() => this._changeDetectorRef.markForCheck());
   }
+
 }

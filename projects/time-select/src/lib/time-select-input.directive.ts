@@ -25,7 +25,6 @@ import {coerceBooleanProperty} from '@angular/cdk/coercion';
 import {DOWN_ARROW} from '@angular/cdk/keycodes';
 import {MAT_INPUT_VALUE_ACCESSOR, MatFormField, ThemePalette} from '@angular/material';
 import {Observable, Subject, Subscription} from 'rxjs';
-import {Moment} from 'moment';
 import {TimeAdapter} from './time-adapter.service';
 import {MAT_TIME_FORMATS, MatTimeFormats} from './time-formats';
 import {MatTimeSelectComponent} from './time-select.component';
@@ -35,14 +34,14 @@ import {MatTimeSelectComponent} from './time-select.component';
  * input or change event because the event may have been triggered by the user clicking on the
  * calendar popup. For consistency, we always use MatTimeSelectInputEvent instead.
  */
-export class MatTimeSelectInputEvent {
+export class MatTimeSelectInputEvent<D> {
 
   /** The new value for the target time select input. */
-  value: Moment;
+  value: D;
 
   constructor(
     /** Reference to the time select input component that emitted the event. */
-    public target: MatTimeSelectInputDirective,
+    public target: MatTimeSelectInputDirective<D>,
     /** Reference to the native input element associated with the time select input. */
     public targetElement: HTMLElement) {
     this.value = this.target.value;
@@ -60,19 +59,19 @@ export class MatTimeSelectInputEvent {
   ],
   exportAs: 'matTimeSelectInput'
 })
-export class MatTimeSelectInputDirective implements OnDestroy, ControlValueAccessor, Validator {
+export class MatTimeSelectInputDirective<D> implements OnDestroy, ControlValueAccessor, Validator {
 
   private _timeSelectSubscription = Subscription.EMPTY;
   private _localeSubscription: Subscription = Subscription.EMPTY;
 
-  private _timeSelect: MatTimeSelectComponent;
+  private _timeSelect: MatTimeSelectComponent<D>;
 
-  private _value: Moment;
-  private _min: Moment;
-  private _max: Moment;
+  private _value: D;
+  private _min: D;
+  private _max: D;
   private _disabled: boolean;
 
-  private _valueChange: Subject<Moment | null> = new Subject<Moment | null>();
+  private _valueChange: Subject<D | null> = new Subject<D | null>();
   private _disabledChange: Subject<boolean> = new Subject<boolean>();
 
   /** The form control validator for whether the input parses. */
@@ -88,12 +87,12 @@ export class MatTimeSelectInputDirective implements OnDestroy, ControlValueAcces
   private _lastValueValid: boolean;
 
   /** Emits when a `change` event is fired on this `<input>`. */
-  @Output() readonly timeChange: EventEmitter<MatTimeSelectInputEvent> = new EventEmitter<MatTimeSelectInputEvent>();
+  @Output() readonly timeChange: EventEmitter<MatTimeSelectInputEvent<D>> = new EventEmitter<MatTimeSelectInputEvent<D>>();
   /** Emits when an `input` event is fired on this `<input>`. */
-  @Output() readonly timeInput: EventEmitter<MatTimeSelectInputEvent> = new EventEmitter<MatTimeSelectInputEvent>();
+  @Output() readonly timeInput: EventEmitter<MatTimeSelectInputEvent<D>> = new EventEmitter<MatTimeSelectInputEvent<D>>();
 
   /** Emits when the value changes (either due to user input or programmatic change). */
-  valueChange: Observable<Moment | null> = this._valueChange.asObservable();
+  valueChange: Observable<D | null> = this._valueChange.asObservable();
   /** Emits when the disabled state has changed. */
   disabledChange: Observable<boolean> = this._disabledChange.asObservable();
 
@@ -103,7 +102,7 @@ export class MatTimeSelectInputDirective implements OnDestroy, ControlValueAcces
 
   /** The time select that this input is associated with. */
   @Input()
-  set matTimeSelect(value: MatTimeSelectComponent) {
+  set matTimeSelect(value: MatTimeSelectComponent<D>) {
     if (!value) {
       return;
     }
@@ -112,7 +111,7 @@ export class MatTimeSelectInputDirective implements OnDestroy, ControlValueAcces
     this._timeSelect.registerInput(this);
     this._timeSelectSubscription.unsubscribe();
 
-    this._timeSelectSubscription = this._timeSelect.selectedChange.subscribe((selected: Moment) => {
+    this._timeSelectSubscription = this._timeSelect.selectedChange.subscribe((selected: D) => {
       this.value = selected;
       this._onChange(selected);
       this._onTouched();
@@ -123,8 +122,8 @@ export class MatTimeSelectInputDirective implements OnDestroy, ControlValueAcces
 
   /** The value of the input. */
   @Input()
-  get value(): Moment | null { return this._value; }
-  set value(value: Moment | null) {
+  get value(): D | null { return this._value; }
+  set value(value: D | null) {
     value = this._timeAdapter.deserialize(value);
     this._lastValueValid = !value || this._timeAdapter.isValid(value);
     value = this._getValidDateOrNull(value);
@@ -139,16 +138,16 @@ export class MatTimeSelectInputDirective implements OnDestroy, ControlValueAcces
 
   /** The minimum valid date time. */
   @Input()
-  get min(): Moment | null { return this._min; }
-  set min(value: Moment | null) {
+  get min(): D | null { return this._min; }
+  set min(value: D | null) {
     this._min = this._getValidDateOrNull(this._timeAdapter.deserialize(value));
     this._onValidatorChange();
   }
 
   /** The maximum valid date time. */
   @Input()
-  get max(): Moment | null { return this._max; }
-  set max(value: Moment | null) {
+  get max(): D | null { return this._max; }
+  set max(value: D | null) {
     this._max = this._getValidDateOrNull(this._timeAdapter.deserialize(value));
     this._onValidatorChange();
   }
@@ -186,7 +185,7 @@ export class MatTimeSelectInputDirective implements OnDestroy, ControlValueAcces
   get _maxTime(): string | null { return this.max ? this._timeAdapter.toIso8601(this.max) : null; }
 
   constructor(private _elementRef: ElementRef<HTMLInputElement>,
-              @Optional() private _timeAdapter: TimeAdapter,
+              @Optional() private _timeAdapter: TimeAdapter<D>,
               @Optional() @Inject(MAT_TIME_FORMATS) private _timeFormats: MatTimeFormats,
               @Optional() private _formField: MatFormField) {
     this._parseValidator = (): ValidationErrors | null => {
@@ -318,7 +317,7 @@ export class MatTimeSelectInputDirective implements OnDestroy, ControlValueAcces
   }
 
   /** Formats a value and sets it on the input element. */
-  private _formatValue(value: Moment | null) {
+  private _formatValue(value: D | null) {
     this._elementRef.nativeElement.value = value ? this._timeAdapter.format(value, this._timeFormats.display.timeInput) : '';
   }
 
@@ -326,7 +325,7 @@ export class MatTimeSelectInputDirective implements OnDestroy, ControlValueAcces
    * @param obj The object to check.
    * @returns The given object if it is both a date instance and valid, otherwise null.
    */
-  private _getValidDateOrNull(obj: any): Moment | null {
+  private _getValidDateOrNull(obj: any): D | null {
     return this._timeAdapter.isDateInstance(obj) && this._timeAdapter.isValid(obj) ? obj : null;
   }
 

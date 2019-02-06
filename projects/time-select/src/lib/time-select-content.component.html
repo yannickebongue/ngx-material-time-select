@@ -7,15 +7,21 @@
         </div>
       </td>
       <td class="mat-time-select-column mat-time-select-{{ unit }}">
-        <mat-time-unit-select [unit]="unit" [value]="get(unit)" (valueChange)="set(unit, $event)"></mat-time-unit-select>
+        <mat-time-unit-select
+          [min]="getMin(unit)"
+          [max]="getMax(unit)"
+          [unit]="unit"
+          [value]="get(unit)"
+          (valueChange)="set(unit, $event)">
+        </mat-time-unit-select>
       </td>
     </ng-container>
   </tr>
   <tr *ngIf="hourClock === 12">
     <td class="mat-time-ampm" [colSpan]="(units.length * 2) - 1">
       <mat-button-toggle-group [value]="amPm" (change)="amPm = $event.value">
-        <mat-button-toggle value="am">{{ _intl.amLabel }}</mat-button-toggle>
-        <mat-button-toggle value="pm">{{ _intl.pmLabel }}</mat-button-toggle>
+        <mat-button-toggle value="am" [disabled]="!isValid(getAM())">{{ _intl.amLabel }}</mat-button-toggle>
+        <mat-button-toggle value="pm" [disabled]="!isValid(getPM())">{{ _intl.pmLabel }}</mat-button-toggle>
       </mat-button-toggle-group>
     </td>
   </tr>

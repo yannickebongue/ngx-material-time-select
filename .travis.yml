@@ -1,14 +1,14 @@
 language: node_js
 node_js:
-- '9'
+  - '10'
 dist: trusty
 sudo: required
 before_install:
-- npm install -g @angular/cli
-- npm install -g gulp-cli
+  - npm install -g @angular/cli
+  - npm install -g gulp-cli
 script:
-- npm run build
-- npm run build:docs
+  - npm run build
+  - npm run build:docs
 deploy:
   - provider: npm
     skip_cleanup: true
