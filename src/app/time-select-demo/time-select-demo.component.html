@@ -1,0 +1,128 @@
+<h2>Options</h2>
+<p>
+  <mat-checkbox [(ngModel)]="timeSelectDisabled">Disable time select</mat-checkbox>
+  <mat-checkbox [(ngModel)]="inputDisabled">Disable input</mat-checkbox>
+  <mat-form-field>
+    <mat-select [(ngModel)]="color" placeholder="Color">
+      <mat-option value="primary">Primary</mat-option>
+      <mat-option value="accent">Accent</mat-option>
+      <mat-option value="warn">Warn</mat-option>
+    </mat-select>
+  </mat-form-field>
+</p>
+<p>
+  <mat-form-field color="accent">
+    <mat-label>Min time</mat-label>
+    <input matInput [matTimeSelect]="minTimeSelect" [(ngModel)]="minTime"
+           [disabled]="inputDisabled" [max]="maxTime">
+    <mat-time-select-toggle matSuffix [for]="minTimeSelect"></mat-time-select-toggle>
+    <mat-time-select #minTimeSelect [disabled]="timeSelectDisabled"></mat-time-select>
+  </mat-form-field>
+  <mat-form-field color="accent">
+    <mat-label>Max time</mat-label>
+    <input matInput [matTimeSelect]="maxTimeSelect" [(ngModel)]="maxTime"
+           [disabled]="inputDisabled" [min]="minTime">
+    <mat-time-select-toggle matSuffix [for]="maxTimeSelect"></mat-time-select-toggle>
+    <mat-time-select #maxTimeSelect [disabled]="timeSelectDisabled"></mat-time-select>
+  </mat-form-field>
+</p>
+<p>
+  <mat-form-field color="accent">
+    <mat-label>Start at time</mat-label>
+    <input matInput [matTimeSelect]="startAtPicker" [(ngModel)]="startAt"
+           [disabled]="inputDisabled">
+    <mat-time-select-toggle matSuffix [for]="startAtPicker"></mat-time-select-toggle>
+    <mat-time-select #startAtPicker [disabled]="timeSelectDisabled"></mat-time-select>
+  </mat-form-field>
+</p>
+
+<h2>Result</h2>
+
+<p>
+  <mat-time-select-toggle [for]="resultPicker"></mat-time-select-toggle>
+  <mat-form-field>
+    <mat-label>Pick a time</mat-label>
+    <input matInput
+           #resultPickerModel="ngModel"
+           [matTimeSelect]="resultPicker"
+           [(ngModel)]="time"
+           [min]="minTime"
+           [max]="maxTime"
+           [disabled]="inputDisabled"
+           (timeInput)="onTimeInput($event)"
+           (timeChange)="onTimeChange($event)">
+    <mat-time-select
+      #resultPicker
+      [disabled]="timeSelectDisabled"
+      [startAt]="startAt"
+      [color]="color">
+    </mat-time-select>
+    <mat-error *ngIf="resultPickerModel.hasError('matTimeSelectParse')">
+      "{{resultPickerModel.getError('matTimeSelectParse').text}}" is not a valid time!
+    </mat-error>
+    <mat-error *ngIf="resultPickerModel.hasError('matTimeSelectMin')">Too early!</mat-error>
+    <mat-error *ngIf="resultPickerModel.hasError('matTimeSelectMax')">Too late!</mat-error>
+  </mat-form-field>
+</p>
+<p>Last input: {{lastTimeInput}}</p>
+<p>Last change: {{lastTimeChange}}</p>
+<br>
+<p>
+  <input #resultPickerModel2
+         [matTimeSelect]="resultPicker2"
+         [(ngModel)]="time"
+         [min]="minTime"
+         [max]="maxTime"
+         [disabled]="inputDisabled"
+         placeholder="Pick a time">
+  <mat-time-select-toggle [for]="resultPicker2"></mat-time-select-toggle>
+  <mat-time-select
+    #resultPicker2
+    [disabled]="timeSelectDisabled"
+    [startAt]="startAt">
+  </mat-time-select>
+</p>
+
+<h2>Input disabled time select</h2>
+<p>
+  <mat-time-select-toggle [for]="timePicker1"></mat-time-select-toggle>
+  <mat-form-field>
+    <mat-label>Input disabled</mat-label>
+    <input matInput [matTimeSelect]="timePicker1" [(ngModel)]="time" [min]="minTime" [max]="maxTime" disabled>
+    <mat-time-select #timePicker1 [startAt]="startAt"></mat-time-select>
+  </mat-form-field>
+</p>
+
+<h2>Input disabled via FormControl</h2>
+<p>
+  <mat-time-select-toggle [for]="timePicker2"></mat-time-select-toggle>
+  <mat-form-field>
+    <mat-label>FormControl disabled</mat-label>
+    <input matInput [matTimeSelect]="timePicker2" [formControl]="timeCtrl" [min]="minTime" [max]="maxTime">
+    <mat-time-select #timePicker2 [startAt]="startAt"></mat-time-select>
+  </mat-form-field>
+
+  <button mat-button (click)="timeCtrl.disabled ? timeCtrl.enable() : timeCtrl.disable()">
+    {{timeCtrl.disabled ? 'Enable' : 'Disable'}} FormControl
+  </button>
+</p>
+
+<h2>Input disabled, time select popup enabled</h2>
+<p>
+  <mat-time-select-toggle [for]="timePicker3"></mat-time-select-toggle>
+  <mat-form-field>
+    <mat-label>Input disabled, time select enabled</mat-label>
+    <input matInput disabled [matTimeSelect]="timePicker3" [(ngModel)]="time" [min]="minTime" [max]="maxTime">
+    <mat-time-select #timePicker3 [disabled]="false" [startAt]="startAt"></mat-time-select>
+  </mat-form-field>
+</p>
+
+<h2>Time select with value property binding</h2>
+<p>
+  <mat-time-select-toggle [for]="timePicker4"></mat-time-select-toggle>
+  <mat-form-field>
+    <mat-label>Value binding</mat-label>
+    <input matInput [matTimeSelect]="timePicker4" [value]="time" [min]="minTime" [max]="maxTime">
+    <mat-time-select #timePicker4 [startAt]="startAt"></mat-time-select>
+  </mat-form-field>
+</p>
