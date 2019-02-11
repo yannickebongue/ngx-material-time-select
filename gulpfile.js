@@ -3,6 +3,7 @@ const run = require('gulp-run');
 
 const { css } = require('./gulp-tasks/css');
 const { theming } = require('./gulp-tasks/theming');
+const { version } = require('./gulp-tasks/version');
 const compodoc = require('./gulp-tasks/compodoc');
 
 const lib = 'time-select';
@@ -25,7 +26,7 @@ function publish() {
   return run(`npm publish`, {cwd: out, verbosity: 3}).exec();
 }
 
-const buildLib = series(build, theming, css, copyFiles);
+const buildLib = series(build, theming, css, copyFiles, version);
 
 exports['build:lib'] = buildLib;
 exports['build:docs'] = compodoc.build;
