@@ -40,7 +40,8 @@ import {MatTimeSelectModule} from 'ngx-material-time-select';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MatTimeSelectModule
+    MatTimeSelectModule,
+    MatNativeTimeModule             // Or MatMomentTimeModule
   ]
   ...
 })
