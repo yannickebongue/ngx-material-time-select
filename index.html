@@ -1,0 +1,359 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ngx-material-time-select documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+	      <link rel="stylesheet" href="./styles/style.css">
+        <link rel="stylesheet" href="./styles/material.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="./" class="navbar-brand">ngx-material-time-select documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content getting-started">
+                   <div class="content-data">
+
+<h1 id="angular-material-time-select">Angular Material Time Select</h1>
+<p><a href="https://www.npmjs.org/package/ngx-material-time-select"><img src="https://img.shields.io/npm/v/ngx-material-time-select.svg" alt="npm version" class="img-responsive"></a>
+<a href="https://travis-ci.org/yannickebongue/ngx-material-time-select"><img src="https://img.shields.io/travis/yannickebongue/ngx-material-time-select.svg" alt="build status" class="img-responsive"></a>
+<a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/github/license/yannickebongue/ngx-material-time-select.svg" alt="license" class="img-responsive"></a></p>
+<h2 id="table-of-contents">Table of contents</h2>
+<ul>
+<li><a href="#about">About</a></li>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#usage">Usage</a></li>
+<li><a href="#license">License</a></li>
+</ul>
+<h2 id="about">About</h2>
+<p>The time select allows users to enter a time either through text input, or by choosing a time from
+the select panel. It is made up of several components and directives that work together.</p>
+<!-- example(time-select-overview) -->
+
+<h2 id="installation">Installation</h2>
+<ol>
+<li><p>Checkout the Angular Material <a href="https://material.angular.io/guide/getting-started">Getting Started Guide</a>
+if not installed.</p>
+</li>
+<li><p>Install Angular Material Time Select. Also install Moment.js library if not done yet.</p>
+</li>
+</ol>
+<div><pre class="line-numbers"><code class="language-bash">npm install --save moment ngx-material-time-select</code></pre></div><ol start="3">
+<li>Import the time select module:</li>
+</ol>
+<div><pre class="line-numbers"><code class="language-ts">...
+import {MatTimeSelectModule} from &#39;ngx-material-time-select&#39;;
+
+&#64;NgModule({
+  ...
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatTimeSelectModule,
+    MatNativeTimeModule             // Or MatMomentTimeModule
+  ]
+  ...
+})
+export class MyModule { }</code></pre></div><ol start="4">
+<li>Include a prebuilt theme in your <code>style.css</code>:</li>
+</ol>
+<div><pre class="line-numbers"><code class="language-css">&#64;import &quot;~ngx-material-time-select/prebuilt-themes/indigo-pink.css&quot;;</code></pre></div><h2 id="usage">Usage</h2>
+<h3 id="connecting-a-time-select-to-an-input">Connecting a time select to an input</h3>
+<p>A time-select is composed of a text input and a select panel pop-up, connected via the <code>matTimeSelect</code>
+property on the text input.</p>
+<div><pre class="line-numbers"><code class="language-html">&lt;input [matTimeSelect]=&quot;myTimeSelect&quot;&gt;
+&lt;mat-time-select #myTimeSelect&gt;&lt;/mat-time-select&gt;</code></pre></div><p>An optional time select toggle button is available. A toggle can be added to the example above:</p>
+<div><pre class="line-numbers"><code class="language-html">&lt;input [matTimeSelect]=&quot;myTimeSelect&quot;&gt;
+&lt;mat-time-select-toggle [for]=&quot;myTimeSelect&quot;&gt;&lt;/mat-time-select-toggle&gt;
+&lt;mat-time-select #myTimeSelect&gt;&lt;/mat-time-select&gt;</code></pre></div><p>This works exactly the same with an input that is part of an <code>&lt;mat-form-field&gt;</code> and the toggle
+can easily be used as a prefix or suffix on the material input:</p>
+<div><pre class="line-numbers"><code class="language-html">&lt;mat-form-field&gt;
+  &lt;input matInput [matTimeSelect]=&quot;myTimeSelect&quot;&gt;
+  &lt;mat-time-select-toggle matSuffix [for]=&quot;myTimeSelect&quot;&gt;&lt;/mat-time-select-toggle&gt;
+  &lt;mat-time-select #myTimeSelect&gt;&lt;/mat-time-select&gt;
+&lt;/mat-form-field&gt;</code></pre></div><p>If you want to customize the icon that is rendered inside the <code>mat-time-select-toggle</code>, you can do so
+by using the <code>matTimeSelectToggleIcon</code> directive:</p>
+<!-- example(time-select-custom-icon) -->
+
+<h3 id="setting-the-selected-time">Setting the selected time</h3>
+<p>The type of values that the time select expects depends on the type of <code>TimeAdapter</code> provided in your
+application. When using the default <code>TimeAdapter</code>, the values will all be Moment.js instances.</p>
+<p>Depending on the <code>TimeAdapter</code> being used, the time select may automatically deserialize certain time
+formats for you as well. For example, the <code>TimeAdapter</code> allow
+<a href="https://tools.ietf.org/html/rfc3339">ISO 8601</a> strings to be passed to the time select and
+automatically converted to the proper object type. This can be convenient when binding data directly
+from your backend to the time select. However, the time select will not accept time strings formatted
+in user format such as <code>&quot;1:25 PM&quot;</code> as this is ambiguous and will mean different things depending on
+the locale of the browser running the code.</p>
+<p>As with other types of <code>&lt;input&gt;</code>, the time select works with <code>@angular/forms</code> directives such as
+<code>formGroup</code>, <code>formControl</code>, <code>ngModel</code>, etc.</p>
+<!-- example(time-select-value) -->
+
+<h3 id="changing-the-time-select-colors">Changing the time select colors</h3>
+<p>The time select popup will automatically inherit the color palette (<code>primary</code>, <code>accent</code>, or <code>warn</code>)
+from the <code>mat-form-field</code> it is attached to. If you would like to specify a different palette for
+the popup you can do so by setting the <code>color</code> property on <code>mat-time-select</code>.</p>
+<!-- example(time-select-color) -->
+
+<h3 id="time-validation">Time validation</h3>
+<p>There are two properties that add time validation to the time select input. The <code>min</code> and <code>max</code>
+properties.</p>
+<!-- example(time-select-min-max) -->
+
+<p>Each validation property has a different error that can be checked:</p>
+<ul>
+<li>A value that violates the <code>min</code> property will have a <code>matTimeSelectMin</code> error.</li>
+<li>A value that violates the <code>max</code> property will have a <code>matTimeSelectMax</code> error.</li>
+</ul>
+<h3 id="input-and-change-events">Input and change events</h3>
+<p>The input&#39;s native <code>(input)</code> and <code>(change)</code> events will only trigger due to user interaction with
+the input element; they will not fire when the user selects a time from the select panel.
+Therefore, the time select input also has support for <code>(timeInput)</code> and <code>(timeChange)</code> events. These
+trigger when the user interacts with either the input or the popup.</p>
+<p>The <code>(timeInput)</code> event will fire whenever the value changes due to the user typing or selecting a
+time from the select panel. The <code>(timeChange)</code> event will fire whenever the user finishes typing input
+(on <code>&lt;input&gt;</code> blur), or when the user chooses a time from the select panel.</p>
+<!-- example(time-select-events) -->
+
+<h3 id="disabling-parts-of-the-time-select">Disabling parts of the time select</h3>
+<p>As with any standard <code>&lt;input&gt;</code>, it is possible to disable the time select input by adding the
+<code>disabled</code> property. By default, the <code>&lt;mat-time-select&gt;</code> and <code>&lt;mat-time-select-toggle&gt;</code> will inherit
+their disabled state from the <code>&lt;input&gt;</code>, but this can be overridden by setting the <code>disabled</code>
+property on the time select or toggle elements. This can be useful if you want to disable text input
+but allow selection via the select panel or vice-versa.</p>
+<!-- example(time-select-disabled) -->
+
+<h3 id="manually-opening-and-closing-the-select-panel">Manually opening and closing the select panel</h3>
+<p>The select panel can be programmatically controlled using the <code>open</code> and <code>close</code> methods on the
+<code>&lt;mat-time-select&gt;</code>. It also has an <code>opened</code> property that reflects the status of the popup.</p>
+<!-- example(time-select-api) -->
+
+<h3 id="internationalization">Internationalization</h3>
+<p>Internationalization of the time select is configured via three aspects:</p>
+<ol>
+<li>The time locale.</li>
+<li>The date implementation that the time select accepts.</li>
+<li>The display and parse formats used by the time select.</li>
+<li>The message strings used in the time select&#39;s UI.</li>
+</ol>
+<h4 id="setting-the-locale-code">Setting the locale code</h4>
+<p>The time select use the same injection token of the Datepicker from <code>@angular/material</code>.
+<a href="https://material.angular.io/components/datepicker/overview#setting-the-locale-code">See documentation</a>.</p>
+<p>It&#39;s also possible to set the locale at runtime using the <code>setLocale</code> method of the <code>TimeAdapter</code>.</p>
+<!-- example(time-select-locale) -->
+
+<h4 id="choosing-a-date-implementation-and-date-format-settings">Choosing a date implementation and date format settings</h4>
+<p>The time select was built to be date implementation agnostic. This means that it can be made to work
+with a variety of different date implementations. However it also means that developers need to make
+sure to provide the appropriate pieces for the time select to work with their chosen implementation.
+The easiest way to ensure this is just to import one of the pre-made modules:</p>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr>
+<th>Module</th>
+<th>Date type</th>
+<th>Supported locales</th>
+<th>Dependencies</th>
+<th>Import from</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MatNativeTimeModule</code></td>
+<td><code>Date</code></td>
+<td>en-US</td>
+<td>None</td>
+<td><code>ngx-material-time-select</code></td>
+</tr>
+<tr>
+<td><code>MatMomentTimeModule</code></td>
+<td><code>Moment</code></td>
+<td><a href="https://github.com/moment/moment/tree/develop/src/locale">See project</a></td>
+<td><a href="https://momentjs.com/">Moment.js</a></td>
+<td><code>ngx-material-time-select</code></td>
+</tr>
+</tbody>
+</table>
+<p><em>Please note: <code>MatNativeTimeModule</code> is based off of the functionality available in JavaScript&#39;s
+native <code>Date</code> object, and is thus not suitable for many locales. One of the biggest shortcomings of
+the native <code>Date</code> object is the inability to set the parse format. We highly recommend using the
+<code>MomentTimeAdapter</code> or a custom <code>TimeAdapter</code> that works with the formatting/parsing library of your
+choice.</em></p>
+<p>These modules include providers for <code>TimeAdapter</code> and <code>MAT_TIME_FORMATS</code></p>
+<div><pre class="line-numbers"><code class="language-ts">&#64;NgModule({
+  imports: [MatTimeSelectModule, MatNativeTimeModule],
+})
+export class MyApp {}</code></pre></div><p>Because <code>TimeAdapter</code> is a generic class, <code>MatTimeSelectComponent</code> and <code>MatTimeSelectInputDirective</code>
+also need to be made generic. When working with these classes (for example as a <code>ViewChild</code>) you
+should include the appropriate generic type that corresponds to the <code>TimeAdapter</code> implementation
+you are using. For example:</p>
+<div><pre class="line-numbers"><code class="language-ts">&#64;Component({...})
+export class MyComponent {
+  &#64;ViewChild(MatTimeSelectComponent) timeSelect: MatTimeSelectComponent&lt;Date&gt;;
+}</code></pre></div><!-- example(time-select-moment) -->
+
+<p>It is also possible to create your own <code>TimeAdapter</code> that works with any date format your app
+requires. This is accomplished by subclassing <code>TimeAdapter</code> and providing your subclass as the
+<code>TimeAdapter</code> implementation. You will also want to make sure that the <code>MAT_TIME_FORMATS</code> provided
+in your app are formats that can be understood by your date implementation. See
+<a href="#customizing-the-parse-and-display-formats"><em>Customizing the parse and display formats</em></a>for more
+information about <code>MAT_TIME_FORMATS</code>.</p>
+<div><pre class="line-numbers"><code class="language-ts">&#64;NgModule({
+  imports: [MatTimeSelectModule],
+  providers: [
+    {provide: TimeAdapter, useClass: MyTimeAdapter},
+    {provide: MAT_TIME_FORMATS, useValue: MY_DATE_FORMATS},
+  ],
+})
+export class MyApp {}</code></pre></div><h4 id="customizing-the-parse-and-display-formats">Customizing the parse and display formats</h4>
+<p>The <code>MAT_TIME_FORMATS</code> object is just a collection of formats that the time select uses when parsing
+and displaying times. These formats are passed through to the <code>TimeAdapter</code> so you will want to make
+sure that the format objects you&#39;re using are compatible with the <code>TimeAdapter</code> used in your app.</p>
+<div><pre class="line-numbers"><code class="language-ts">&#64;NgModule({
+  imports: [MatTimeSelectModule],
+  providers: [
+    {provide: MAT_TIME_FORMATS, useValue: MY_TIME_FORMATS},
+  ],
+})
+export class MyApp {}</code></pre></div><!-- example(time-select-formats) -->
+
+<h4 id="localizing-labels-and-messages">Localizing labels and messages</h4>
+<p>The various text strings used by the time select are provided through <code>MatTimeSelectIntl</code>.
+Localization of these messages can be done by providing a subclass with translated values in your
+application root module.</p>
+<div><pre class="line-numbers"><code class="language-ts">&#64;NgModule({
+  imports: [MatTimeSelectModule],
+  providers: [
+    {provide: MatTimeSelectIntl, useClass: MyIntl},
+  ],
+})
+export class MyApp {}</code></pre></div><h3 id="accessibility">Accessibility</h3>
+<p>The <code>MatTimeSelectInput</code> and <code>MatTimeSelectToggle</code> directives add the <code>aria-haspopup</code> attribute to
+the native input and toggle button elements respectively, and they trigger a select panel dialog with
+<code>role=&quot;dialog&quot;</code>.</p>
+<p><code>MatTimeSelectIntl</code> includes strings that are used for <code>aria-label</code>s. The time select input
+should have a placeholder or be given a meaningful label via <code>aria-label</code>, <code>aria-labelledby</code> or
+<code>MatTimeSelectIntl</code>.</p>
+<h4 id="keyboard-shortcuts">Keyboard shortcuts</h4>
+<p>The time select supports the following keyboard shortcuts:</p>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr>
+<th>Shortcut</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ALT</code> + <code>DOWN_ARROW</code></td>
+<td>Open the select panel pop-up</td>
+</tr>
+<tr>
+<td><code>ESCAPE</code></td>
+<td>Close the select panel pop-up</td>
+</tr>
+</tbody>
+</table>
+<h3 id="troubleshooting">Troubleshooting</h3>
+<h4 id="error-mattimeselectcomponent-no-provider-found-for-timeadapter-mat_time_formats">Error: MatTimeSelectComponent: No provider found for TimeAdapter/MAT_TIME_FORMATS</h4>
+<p>This error is thrown if you have not provided all of the injectables the time select needs to work.
+The easiest way to resolve this is to import the <code>MatNativeTimeModule</code> or <code>MatMomentTimeModule</code> in
+your application&#39;s root module. See
+<a href="#choosing-a-date-implementation-and-date-format-settings"><em>Choosing a date implementation</em></a>) for
+more information.</p>
+<h4 id="error-a-mattimeselectcomponent-can-only-be-associated-with-a-single-input">Error: A MatTimeSelectComponent can only be associated with a single input</h4>
+<p>This error is thrown if more than one <code>&lt;input&gt;</code> tries to claim ownership over the same
+<code>&lt;mat-time-select&gt;</code> (via the <code>matTimeSelect</code> attribute on the input). A time select can only be
+associated with a single input.</p>
+<h4 id="error-attempted-to-open-a-mattimeselectcomponent-with-no-associated-input-">Error: Attempted to open a MatTimeSelectComponent with no associated input.</h4>
+<p>This error occurs if your <code>&lt;mat-time-select&gt;</code> is not associated with any <code>&lt;input&gt;</code>. To associate an
+input with your time select, create a template reference for the time select and assign it to the
+<code>matTimeSelect</code> attribute on the input:</p>
+<div><pre class="line-numbers"><code class="language-html">&lt;input [matTimeSelect]=&quot;picker&quot;&gt;
+&lt;mat-time-select #picker&gt;&lt;/mat-time-select&gt;</code></pre></div><h2 id="license">License</h2>
+<p>Copyright (c) 2019 Yannick Ebongue</p>
+<p>Released under the MIT License (see <a href="LICENSE">LICENSE</a>)</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 0;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'getting-started';
+            var COMPODOC_CURRENT_PAGE_URL = 'index.html';
+       </script>
+
+       <script src="./js/libs/custom-elements.min.js"></script>
+       <script src="./js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="./js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="./js/menu-wc.js" defer></script>
+
+       <script src="./js/libs/bootstrap-native.js"></script>
+
+       <script src="./js/libs/es6-shim.min.js"></script>
+       <script src="./js/libs/EventDispatcher.js"></script>
+       <script src="./js/libs/promise.min.js"></script>
+       <script src="./js/libs/zepto.min.js"></script>
+
+       <script src="./js/compodoc.js"></script>
+
+       <script src="./js/tabs.js"></script>
+       <script src="./js/menu.js"></script>
+       <script src="./js/libs/clipboard.min.js"></script>
+       <script src="./js/libs/prism.js"></script>
+       <script src="./js/sourceCode.js"></script>
+          <script src="./js/search/search.js"></script>
+          <script src="./js/search/lunr.min.js"></script>
+          <script src="./js/search/search-lunr.js"></script>
+          <script src="./js/search/search_index.js"></script>
+       <script src="./js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

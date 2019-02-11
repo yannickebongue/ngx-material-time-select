@@ -1,0 +1,1206 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ngx-material-time-select documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/material.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">ngx-material-time-select documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>MatTimeUnitSelectComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>projects/time-select/src/lib/time-unit-select.component.ts</code>
+</p>
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Component used to select a value of a unit of time. </p>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code><a href="https://angular.io/api/core/AfterViewInit" target="_blank" >AfterViewInit</a></code>
+                <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">encapsulation</td>
+                <td class="col-md-9"><code>ViewEncapsulation.None</code></td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">exportAs</td>
+                <td class="col-md-9"><code>matTimeSelect</code></td>
+            </tr>
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>mat-time-unit-select</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./time-unit-select.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./time-unit-select.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#options">options</a>
+                            </li>
+                            <li>
+                                <a href="#panel">panel</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#getNext">getNext</a>
+                            </li>
+                            <li>
+                                <a href="#getPrev">getPrev</a>
+                            </li>
+                            <li>
+                                <a href="#isValid">isValid</a>
+                            </li>
+                            <li>
+                                <a href="#move">move</a>
+                            </li>
+                            <li>
+                                <a href="#next">next</a>
+                            </li>
+                            <li>
+                                <a href="#ngAfterViewInit">ngAfterViewInit</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#prev">prev</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#max">max</a>
+                            </li>
+                            <li>
+                                <a href="#min">min</a>
+                            </li>
+                            <li>
+                                <a href="#unit">unit</a>
+                            </li>
+                            <li>
+                                <a href="#value">value</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#valueChange">valueChange</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(_changeDetectorRef: <a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>, _timeAdapter: <a href="../classes/TimeAdapter.html">TimeAdapter<D></a>, _timeFormats: <a href="../interfaces/MatTimeFormats.html">MatTimeFormats</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">projects/time-select/src/lib/time-unit-select.component.ts:48</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>_changeDetectorRef</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank" >ChangeDetectorRef</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_timeAdapter</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="../classes/TimeAdapter.html" target="_self" >TimeAdapter&lt;D&gt;</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_timeFormats</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="../interfaces/MatTimeFormats.html" target="_self" >MatTimeFormats</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        <a name="max"></a>
+                        <code>max</code>
+                    </td>
+                    <td class="col-md-10">
+                        <div><p>The maximum selectable value. </p>
+</div>
+                            <p>
+                            <em>Type :</em>    <code>number | null</code>
+
+                            </p>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">projects/time-select/src/lib/time-unit-select.component.ts:39</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        <a name="min"></a>
+                        <code>min</code>
+                    </td>
+                    <td class="col-md-10">
+                        <div><p>The minimum selectable value. </p>
+</div>
+                            <p>
+                            <em>Type :</em>    <code>number | null</code>
+
+                            </p>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">projects/time-select/src/lib/time-unit-select.component.ts:37</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        <a name="unit"></a>
+                        <code>unit</code>
+                    </td>
+                    <td class="col-md-10">
+                        <div><p>The unit of time of the time select. </p>
+</div>
+                            <p>
+                            <em>Type :</em>    <code>unitOfTime.All</code>
+
+                            </p>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">projects/time-select/src/lib/time-unit-select.component.ts:35</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        <a name="value"></a>
+                        <code>value</code>
+                    </td>
+                    <td class="col-md-10">
+                        <div><p>The currently selected value. </p>
+</div>
+                            <p>
+                            <em>Type :</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                            </p>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">projects/time-select/src/lib/time-unit-select.component.ts:33</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+    <section>
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        <a name="valueChange"></a>
+                        <code>valueChange</code>
+                    </td>
+                    <td class="col-md-10">
+                        <div><p>Emits when selected value has been changed. Output to enable support for two-way binding on <code>[(value)]</code>. </p>
+</div>
+                        <em><code>$event</code> Type:</em>    <code>EventEmitter&lt;number&gt;</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">projects/time-select/src/lib/time-unit-select.component.ts:45</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section>
+    
+        <h3 id="methods">
+            Methods
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getNext"></a>
+                        <span class="name">
+                            <b>
+                            getNext
+                            </b>
+                            <a href="#getNext"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>getNext()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="137" class="link-to-prism">projects/time-select/src/lib/time-unit-select.component.ts:137</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Gets the next option value.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getPrev"></a>
+                        <span class="name">
+                            <b>
+                            getPrev
+                            </b>
+                            <a href="#getPrev"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>getPrev()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="130" class="link-to-prism">projects/time-select/src/lib/time-unit-select.component.ts:130</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Gets the previous option value.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="isValid"></a>
+                        <span class="name">
+                            <b>
+                            isValid
+                            </b>
+                            <a href="#isValid"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>isValid(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="145" class="link-to-prism">projects/time-select/src/lib/time-unit-select.component.ts:145</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Whether the given value is valid.</p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>value</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>The value to check.</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="move"></a>
+                        <span class="name">
+                            <b>
+                            move
+                            </b>
+                            <a href="#move"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>move(step: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">projects/time-select/src/lib/time-unit-select.component.ts:98</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Select the option moving by the given amount of step.</p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>step</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>The amount of step to move.</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="next"></a>
+                        <span class="name">
+                            <b>
+                            next
+                            </b>
+                            <a href="#next"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>next()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="90" class="link-to-prism">projects/time-select/src/lib/time-unit-select.component.ts:90</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Select the next option. </p>
+</div>
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="ngAfterViewInit"></a>
+                        <span class="name">
+                            <b>
+                            ngAfterViewInit
+                            </b>
+                            <a href="#ngAfterViewInit"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>ngAfterViewInit()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">projects/time-select/src/lib/time-unit-select.component.ts:75</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="ngOnInit"></a>
+                        <span class="name">
+                            <b>
+                            ngOnInit
+                            </b>
+                            <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>ngOnInit()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">projects/time-select/src/lib/time-unit-select.component.ts:54</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="prev"></a>
+                        <span class="name">
+                            <b>
+                            prev
+                            </b>
+                            <a href="#prev"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>prev()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">projects/time-select/src/lib/time-unit-select.component.ts:85</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Select the previous option. </p>
+</div>
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="options"></a>
+                        <span class="name">
+                            <b>
+                            options
+                            </b>
+                            <a href="#options"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>options:     <code>literal type[]</code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>literal type[]</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">projects/time-select/src/lib/time-unit-select.component.ts:42</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The list of all values of the time select. </p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="panel"></a>
+                        <span class="name">
+                            <b>
+                            panel
+                            </b>
+                            <a href="#panel"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>panel:     <code>ElementRef&lt;HTMLElement&gt;</code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>ElementRef&lt;HTMLElement&gt;</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(&#x27;panel&#x27;)<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">projects/time-select/src/lib/time-unit-select.component.ts:48</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The panel element containing all time select options. </p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Inject,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+  ViewEncapsulation
+} from &#x27;@angular/core&#x27;;
+import {DurationInputArg1, DurationInputArg2, unitOfTime} from &#x27;moment&#x27;;
+import {TimeAdapter} from &#x27;./time-adapter.service&#x27;;
+import {MAT_TIME_FORMATS, MatTimeFormats} from &#x27;./time-formats&#x27;;
+
+/** Component used to select a value of a unit of time. */
+@Component({
+  selector: &#x27;mat-time-unit-select&#x27;,
+  templateUrl: &#x27;./time-unit-select.component.html&#x27;,
+  styleUrls: [&#x27;./time-unit-select.component.scss&#x27;],
+  exportAs: &#x27;matTimeSelect&#x27;,
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
+export class MatTimeUnitSelectComponent&lt;D&gt; implements AfterViewInit, OnInit {
+
+  private _originTop: number;
+
+  /** The currently selected value. */
+  @Input() value: number;
+  /** The unit of time of the time select. */
+  @Input() unit: unitOfTime.All;
+  /** The minimum selectable value. */
+  @Input() min: number | null;
+  /** The maximum selectable value. */
+  @Input() max: number | null;
+
+  /** The list of all values of the time select. */
+  options: {value: number; label: string}[] &#x3D; [];
+
+  /** Emits when selected value has been changed. Output to enable support for two-way binding on &#x60;[(value)]&#x60;. */
+  @Output() valueChange: EventEmitter&lt;number&gt; &#x3D; new EventEmitter&lt;number&gt;();
+
+  /** The panel element containing all time select options. */
+  @ViewChild(&#x27;panel&#x27;) panel: ElementRef&lt;HTMLElement&gt;;
+
+  constructor(private _changeDetectorRef: ChangeDetectorRef,
+              private _timeAdapter: TimeAdapter&lt;D&gt;,
+              @Inject(MAT_TIME_FORMATS) private _timeFormats: MatTimeFormats) { }
+
+  ngOnInit() {
+    const unit &#x3D; this.unit;
+    const time &#x3D; this._timeAdapter.createTime();
+    const moment &#x3D; this._timeAdapter.toMoment(time);
+    const start &#x3D; moment.clone().startOf(&#x27;day&#x27;);
+    const end &#x3D; moment.clone().endOf(&#x27;day&#x27;);
+    const min &#x3D; start.get(unit);
+    const max &#x3D; end.get(unit);
+    const localeData &#x3D; moment.localeData();
+    const displayFormat &#x3D; localeData.longDateFormat(&#x27;LTS&#x27;);
+    const unitFormat &#x3D; unit &#x3D;&#x3D;&#x3D; &#x27;hour&#x27; ?
+      displayFormat.match(/hh?|HH?/g)[0] : unit &#x3D;&#x3D;&#x3D; &#x27;minute&#x27; ?
+        displayFormat.match(/mm?/g)[0] : displayFormat.match(/ss?/g)[0];
+    moment.set(unit, this.value);
+    moment.subtract(1 as DurationInputArg1, unit as DurationInputArg2);
+    for (let value &#x3D; min; value &lt;&#x3D; max; value++) {
+      moment.add(1 as DurationInputArg1, unit as DurationInputArg2);
+      this.options.push({value: moment.get(unit), label: moment.format(unitFormat)});
+    }
+  }
+
+  ngAfterViewInit() {
+    const element &#x3D; this.panel.nativeElement;
+    this._originTop &#x3D; parseFloat(getComputedStyle(element).top);
+    element.addEventListener(&#x27;transitionend&#x27;, () &#x3D;&gt; {
+      element.style.removeProperty(&#x27;transition&#x27;);
+    });
+    setTimeout(() &#x3D;&gt; this.move(this.options.length / 2));
+  }
+
+  /** Select the previous option. */
+  prev() {
+    this.move(-1);
+  }
+
+  /** Select the next option. */
+  next() {
+    this.move(+1);
+  }
+
+  /**
+   * Select the option moving by the given amount of step.
+   * @param step The amount of step to move.
+   */
+  move(step: number) {
+    const element &#x3D; this.panel.nativeElement;
+    const option &#x3D; element.querySelector(&#x27;mat-time-unit-option&#x27;);
+    const optionHeight &#x3D; parseFloat(getComputedStyle(option).height);
+    const currentTop &#x3D; parseFloat(getComputedStyle(element).top);
+    const targetTop &#x3D; currentTop + (step * optionHeight);
+    const y &#x3D; this._originTop - targetTop;
+
+    element.style.top &#x3D; &#x60;${targetTop}px&#x60;;
+
+    if (step &lt; 0) {
+      // Move last option to the top
+      for (let i &#x3D; 0; i &gt; step; i--) {
+        this.options.unshift(this.options.pop());
+      }
+    } else if (step &gt; 0) {
+      // Move first option to the bottom
+      for (let i &#x3D; 0; i &lt; step; i++) {
+        this.options.push(this.options.shift());
+      }
+    }
+
+    this.value &#x3D; this.options[(this.options.length / 2)].value;
+    this.valueChange.emit(this.value);
+
+    element.style.transition &#x3D; &#x27;transform 0.5s&#x27;;
+    element.style.transform &#x3D; &#x60;translateY(${y}px)&#x60;;
+  }
+
+  /**
+   * Gets the previous option value.
+   */
+  getPrev(): number {
+    return this.options[(this.options.length / 2) - 1].value;
+  }
+
+  /**
+   * Gets the next option value.
+   */
+  getNext(): number {
+    return this.options[(this.options.length / 2) + 1].value;
+  }
+
+  /**
+   * Whether the given value is valid.
+   * @param value The value to check.
+   */
+  isValid(value: number): boolean {
+    return (this.min &#x3D;&#x3D;&#x3D; null || value &gt;&#x3D; this.min) &amp;&amp; (this.max &#x3D;&#x3D;&#x3D; null || value &lt;&#x3D; this.max);
+  }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;mat-time-unit-select-carousel&quot;&gt;
+  &lt;button class&#x3D;&quot;mat-time-unit-select-arrow mat-time-unit-select-prev&quot; mat-icon-button aria-label&#x3D;&quot;Previous&quot; [disabled]&#x3D;&quot;!isValid(getPrev())&quot; (click)&#x3D;&quot;prev()&quot;&gt;
+    &lt;mat-icon&gt;keyboard_arrow_up&lt;/mat-icon&gt;
+  &lt;/button&gt;
+  &lt;div class&#x3D;&quot;mat-time-unit-select-mask&quot;&gt;
+    &lt;div #panel class&#x3D;&quot;mat-time-unit-select-panel&quot;&gt;
+      &lt;mat-time-unit-option *ngFor&#x3D;&quot;let option of options&quot; [value]&#x3D;&quot;option.value&quot; [disabled]&#x3D;&quot;!isValid(option.value)&quot;&gt; {{ option.label }} &lt;/mat-time-unit-option&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;button class&#x3D;&quot;mat-time-unit-select-arrow mat-time-unit-select-next&quot; mat-icon-button aria-label&#x3D;&quot;Next&quot; [disabled]&#x3D;&quot;!isValid(getNext())&quot; (click)&#x3D;&quot;next()&quot;&gt;
+    &lt;mat-icon&gt;keyboard_arrow_down&lt;/mat-icon&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./time-unit-select.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">mat-time-unit-select {
+  display: block;
+  height: 100%;
+
+  .mat-time-unit-select-carousel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+  }
+
+  .mat-time-unit-select-mask {
+    flex: auto;
+    max-height: 120px;
+    width: 100%;
+    overflow: hidden;
+  }
+
+}
+</code></pre>
+    </div>
+
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="mat-time-unit-select-carousel">  <button class="mat-time-unit-select-arrow mat-time-unit-select-prev" mat-icon-button aria-label="Previous" [disabled]="!isValid(getPrev())" (click)="prev()">    <mat-icon>keyboard_arrow_up</mat-icon>  </button>  <div class="mat-time-unit-select-mask">    <div #panel class="mat-time-unit-select-panel">      <mat-time-unit-option *ngFor="let option of options" [value]="option.value" [disabled]="!isValid(option.value)"> {{ option.label }} </mat-time-unit-option>    </div>  </div>  <button class="mat-time-unit-select-arrow mat-time-unit-select-next" mat-icon-button aria-label="Next" [disabled]="!isValid(getNext())" (click)="next()">    <mat-icon>keyboard_arrow_down</mat-icon>  </button></div></div>'
+    var COMPONENTS = [{'name': 'MatTimeSelectComponent', 'selector': 'mat-time-select'},{'name': 'MatTimeSelectContentComponent', 'selector': 'mat-time-select-content'},{'name': 'MatTimeSelectToggleComponent', 'selector': 'mat-time-select-toggle'},{'name': 'MatTimeUnitOptionComponent', 'selector': 'mat-time-unit-option'},{'name': 'MatTimeUnitSelectComponent', 'selector': 'mat-time-unit-select'}];
+    var DIRECTIVES = [{'name': 'MatTimeSelectInputDirective', 'selector': 'input[matTimeSelect]'},{'name': 'MatTimeSelectToggleIconDirective', 'selector': '[matTimeSelectToggleIcon]'}];
+    var ACTUAL_COMPONENT = {'name': 'MatTimeUnitSelectComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'MatTimeUnitSelectComponent.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -1,0 +1,2157 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ngx-material-time-select documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/material.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">ngx-material-time-select documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content directive">
+                   <div class="content-data">
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Directives</li>
+  <li>MatTimeSelectInputDirective</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>projects/time-select/src/lib/time-select-input.directive.ts</code>
+        </p>
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Directive used to connect an input to a MatTimeSelectComponent. </p>
+
+            </p>
+
+            <p class="comment">
+                <h3>Implements</h3>
+            </p>
+            <p class="comment">
+                        <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+                        <code><a href="https://angular.io/api/forms/ControlValueAccessor" target="_blank" >ControlValueAccessor</a></code>
+                        <code><a href="https://angular.io/api/forms/Validator" target="_blank" >Validator</a></code>
+            </p>
+
+
+        <section>
+            <h3>Metadata</h3>
+            <table class="table table-sm table-hover">
+                <tbody>
+                    <tr>
+                        <td class="col-md-3">Providers</td>
+                        <td class="col-md-9">
+                            <code>
+                                { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() &#x3D;&gt; MatTimeSelectInputDirective), multi: true }
+                                { provide: NG_VALIDATORS, useExisting: forwardRef(() &#x3D;&gt; MatTimeSelectInputDirective), multi: true }
+                                { provide: MAT_INPUT_VALUE_ACCESSOR, useExisting: MatTimeSelectInputDirective }
+                            </code>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="col-md-3">Selector</td>
+                        <td class="col-md-9"><code>input[matTimeSelect]</code></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </section>
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#disabledChange">disabledChange</a>
+                            </li>
+                            <li>
+                                <a href="#valueChange">valueChange</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#getConnectedOverlayOrigin">getConnectedOverlayOrigin</a>
+                            </li>
+                            <li>
+                                <a href="#getThemePalette">getThemePalette</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy">ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#registerOnChange">registerOnChange</a>
+                            </li>
+                            <li>
+                                <a href="#registerOnTouched">registerOnTouched</a>
+                            </li>
+                            <li>
+                                <a href="#registerOnValidatorChange">registerOnValidatorChange</a>
+                            </li>
+                            <li>
+                                <a href="#setDisabledState">setDisabledState</a>
+                            </li>
+                            <li>
+                                <a href="#validate">validate</a>
+                            </li>
+                            <li>
+                                <a href="#writeValue">writeValue</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#disabled">disabled</a>
+                            </li>
+                            <li>
+                                <a href="#matTimeSelect">matTimeSelect</a>
+                            </li>
+                            <li>
+                                <a href="#max">max</a>
+                            </li>
+                            <li>
+                                <a href="#min">min</a>
+                            </li>
+                            <li>
+                                <a href="#value">value</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#timeChange">timeChange</a>
+                            </li>
+                            <li>
+                                <a href="#timeInput">timeInput</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>HostBindings</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#attr.aria-haspopup">attr.aria-haspopup</a>
+                            </li>
+                            <li>
+                                <a href="#attr.aria-owns">attr.aria-owns</a>
+                            </li>
+                            <li>
+                                <a href="#attr.max">attr.max</a>
+                            </li>
+                            <li>
+                                <a href="#attr.min">attr.min</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>HostListeners</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#blur">blur</a>
+                            </li>
+                            <li>
+                                <a href="#change">change</a>
+                            </li>
+                            <li>
+                                <a href="#input">input</a>
+                            </li>
+                            <li>
+                                <a href="#keydown">keydown</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#matTimeSelect">matTimeSelect</a>
+                                </li>
+                                <li>
+                                    <a href="#value">value</a>
+                                </li>
+                                <li>
+                                    <a href="#min">min</a>
+                                </li>
+                                <li>
+                                    <a href="#max">max</a>
+                                </li>
+                                <li>
+                                    <a href="#disabled">disabled</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(_elementRef: ElementRef<HTMLInputElement>, _timeAdapter: <a href="../classes/TimeAdapter.html">TimeAdapter<D></a>, _timeFormats: <a href="../interfaces/MatTimeFormats.html">MatTimeFormats</a>, _formField: MatFormField)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="185" class="link-to-prism">projects/time-select/src/lib/time-select-input.directive.ts:185</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>_elementRef</td>
+                                                  
+                                                        <td>
+                                                                    <code>ElementRef&lt;HTMLInputElement&gt;</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_timeAdapter</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="../classes/TimeAdapter.html" target="_self" >TimeAdapter&lt;D&gt;</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_timeFormats</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="../interfaces/MatTimeFormats.html" target="_self" >MatTimeFormats</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_formField</td>
+                                                  
+                                                        <td>
+                                                                    <code>MatFormField</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        <a name="disabled"></a>
+                        <code>disabled</code>
+                    </td>
+                    <td class="col-md-10">
+                        <div><p>Whether the time select input is disabled. </p>
+</div>
+                            <p>
+                            <em>Type :</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                            </p>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="158" class="link-to-prism">projects/time-select/src/lib/time-select-input.directive.ts:158</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        <a name="matTimeSelect"></a>
+                        <code>matTimeSelect</code>
+                    </td>
+                    <td class="col-md-10">
+                        <div><p>The time select that this input is associated with. </p>
+</div>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="105" class="link-to-prism">projects/time-select/src/lib/time-select-input.directive.ts:105</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        <a name="max"></a>
+                        <code>max</code>
+                    </td>
+                    <td class="col-md-10">
+                        <div><p>The maximum valid date time. </p>
+</div>
+                            <p>
+                            <em>Type :</em>    <code>D | null</code>
+
+                            </p>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="149" class="link-to-prism">projects/time-select/src/lib/time-select-input.directive.ts:149</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        <a name="min"></a>
+                        <code>min</code>
+                    </td>
+                    <td class="col-md-10">
+                        <div><p>The minimum valid date time. </p>
+</div>
+                            <p>
+                            <em>Type :</em>    <code>D | null</code>
+
+                            </p>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="141" class="link-to-prism">projects/time-select/src/lib/time-select-input.directive.ts:141</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        <a name="value"></a>
+                        <code>value</code>
+                    </td>
+                    <td class="col-md-10">
+                        <div><p>The value of the input. </p>
+</div>
+                            <p>
+                            <em>Type :</em>    <code>D | null</code>
+
+                            </p>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="125" class="link-to-prism">projects/time-select/src/lib/time-select-input.directive.ts:125</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+            <section>
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        <a name="timeChange"></a>
+                        <code>timeChange</code>
+                    </td>
+                    <td class="col-md-10">
+                        <div><p>Emits when a <code>change</code> event is fired on this <code>&lt;input&gt;</code>. </p>
+</div>
+                        <em><code>$event</code> Type:</em>    <code><a href="../classes/MatTimeSelectInputEvent.html" target="_self" >EventEmitter&lt;MatTimeSelectInputEvent&lt;D&gt;&gt;</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="90" class="link-to-prism">projects/time-select/src/lib/time-select-input.directive.ts:90</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        <a name="timeInput"></a>
+                        <code>timeInput</code>
+                    </td>
+                    <td class="col-md-10">
+                        <div><p>Emits when an <code>input</code> event is fired on this <code>&lt;input&gt;</code>. </p>
+</div>
+                        <em><code>$event</code> Type:</em>    <code><a href="../classes/MatTimeSelectInputEvent.html" target="_self" >EventEmitter&lt;MatTimeSelectInputEvent&lt;D&gt;&gt;</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">projects/time-select/src/lib/time-select-input.directive.ts:92</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+            <section>
+    <h3>HostBindings</h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="attr.aria-haspopup"></a>
+                        <span class="name">
+                            <b>
+                            attr.aria-haspopup
+                            </b>
+                            <a href="#attr.aria-haspopup"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>attr.aria-haspopup:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="173" class="link-to-prism">projects/time-select/src/lib/time-select-input.directive.ts:173</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="attr.aria-owns"></a>
+                        <span class="name">
+                            <b>
+                            attr.aria-owns
+                            </b>
+                            <a href="#attr.aria-owns"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>attr.aria-owns:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="177" class="link-to-prism">projects/time-select/src/lib/time-select-input.directive.ts:177</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="attr.max"></a>
+                        <span class="name">
+                            <b>
+                            attr.max
+                            </b>
+                            <a href="#attr.max"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>attr.max:     <code>string | null</code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>string | null</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="185" class="link-to-prism">projects/time-select/src/lib/time-select-input.directive.ts:185</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="attr.min"></a>
+                        <span class="name">
+                            <b>
+                            attr.min
+                            </b>
+                            <a href="#attr.min"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>attr.min:     <code>string | null</code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>string | null</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="181" class="link-to-prism">projects/time-select/src/lib/time-select-input.directive.ts:181</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    <h3>HostListeners</h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="blur"></a>
+                        <span class="name">
+                            <b>
+                            blur
+                            </b>
+                            <a href="#blur"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>blur()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="299" class="link-to-prism">projects/time-select/src/lib/time-select-input.directive.ts:299</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Handle blur event.</p>
+</div>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="change"></a>
+                        <span class="name">
+                            <b>
+                            change
+                            </b>
+                            <a href="#change"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>change()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="291" class="link-to-prism">projects/time-select/src/lib/time-select-input.directive.ts:291</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Handle change event.</p>
+</div>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="input"></a>
+                        <span class="name">
+                            <b>
+                            input
+                            </b>
+                            <a href="#input"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Arguments : </i><code>'$event.target.value' </code>
+                        </td>
+                    </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>input(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="274" class="link-to-prism">projects/time-select/src/lib/time-select-input.directive.ts:274</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Handle input event.</p>
+</div>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="keydown"></a>
+                        <span class="name">
+                            <b>
+                            keydown
+                            </b>
+                            <a href="#keydown"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Arguments : </i><code>'$event' </code>
+                        </td>
+                    </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>keydown(event: KeyboardEvent)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="260" class="link-to-prism">projects/time-select/src/lib/time-select-input.directive.ts:260</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Handle keydown event.</p>
+</div>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+        <h3 id="methods">
+            Methods
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getConnectedOverlayOrigin"></a>
+                        <span class="name">
+                            <b>
+                            getConnectedOverlayOrigin
+                            </b>
+                            <a href="#getConnectedOverlayOrigin"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>getConnectedOverlayOrigin()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="315" class="link-to-prism">projects/time-select/src/lib/time-select-input.directive.ts:315</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Gets the element that the time select popup should be connected to.</p>
+</div>
+
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    <p>The element to connect the popup to.</p>
+
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getThemePalette"></a>
+                        <span class="name">
+                            <b>
+                            getThemePalette
+                            </b>
+                            <a href="#getThemePalette"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>getThemePalette()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="307" class="link-to-prism">projects/time-select/src/lib/time-select-input.directive.ts:307</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Returns the palette used by the input&#39;s form field, if any. </p>
+</div>
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>ThemePalette</code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="ngOnDestroy"></a>
+                        <span class="name">
+                            <b>
+                            ngOnDestroy
+                            </b>
+                            <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="218" class="link-to-prism">projects/time-select/src/lib/time-select-input.directive.ts:218</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="registerOnChange"></a>
+                        <span class="name">
+                            <b>
+                            registerOnChange
+                            </b>
+                            <a href="#registerOnChange"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>registerOnChange(fn: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="231" class="link-to-prism">projects/time-select/src/lib/time-select-input.directive.ts:231</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>fn</td>
+                                                        <td>
+                                                                    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="registerOnTouched"></a>
+                        <span class="name">
+                            <b>
+                            registerOnTouched
+                            </b>
+                            <a href="#registerOnTouched"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>registerOnTouched(fn: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="236" class="link-to-prism">projects/time-select/src/lib/time-select-input.directive.ts:236</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>fn</td>
+                                                        <td>
+                                                                    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="registerOnValidatorChange"></a>
+                        <span class="name">
+                            <b>
+                            registerOnValidatorChange
+                            </b>
+                            <a href="#registerOnValidatorChange"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>registerOnValidatorChange(fn: () => void)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="251" class="link-to-prism">projects/time-select/src/lib/time-select-input.directive.ts:251</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>fn</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="setDisabledState"></a>
+                        <span class="name">
+                            <b>
+                            setDisabledState
+                            </b>
+                            <a href="#setDisabledState"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>setDisabledState(isDisabled: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="241" class="link-to-prism">projects/time-select/src/lib/time-select-input.directive.ts:241</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>isDisabled</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="validate"></a>
+                        <span class="name">
+                            <b>
+                            validate
+                            </b>
+                            <a href="#validate"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>validate(control: <a href="https://angular.io/api/forms/AbstractControl" target="_blank">AbstractControl</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="246" class="link-to-prism">projects/time-select/src/lib/time-select-input.directive.ts:246</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>control</td>
+                                                        <td>
+                                                                    <code><a href="https://angular.io/api/forms/AbstractControl" target="_blank" >AbstractControl</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>ValidationErrors | null</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="writeValue"></a>
+                        <span class="name">
+                            <b>
+                            writeValue
+                            </b>
+                            <a href="#writeValue"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>writeValue(value: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="226" class="link-to-prism">projects/time-select/src/lib/time-select-input.directive.ts:226</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>value</td>
+                                                        <td>
+                                                                    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="disabledChange"></a>
+                        <span class="name">
+                            <b>
+                            disabledChange
+                            </b>
+                            <a href="#disabledChange"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>disabledChange:     <code>Observable&lt;boolean&gt;</code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>Observable&lt;boolean&gt;</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this._disabledChange.asObservable()</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">projects/time-select/src/lib/time-select-input.directive.ts:97</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Emits when the disabled state has changed. </p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="valueChange"></a>
+                        <span class="name">
+                            <b>
+                            valueChange
+                            </b>
+                            <a href="#valueChange"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>valueChange:     <code>Observable&lt;D | null&gt;</code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>Observable&lt;D | null&gt;</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this._valueChange.asObservable()</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">projects/time-select/src/lib/time-select-input.directive.ts:95</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Emits when the value changes (either due to user input or programmatic change). </p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="matTimeSelect"></a>
+                        <span class="name"><b>matTimeSelect</b><a href="#matTimeSelect"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>matTimeSelect(value)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="105" class="link-to-prism">projects/time-select/src/lib/time-select-input.directive.ts:105</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>The time select that this input is associated with. </p>
+</div>
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>value</td>
+                                                    
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="value"></a>
+                        <span class="name"><b>value</b><a href="#value"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>value(value)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="126" class="link-to-prism">projects/time-select/src/lib/time-select-input.directive.ts:126</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>value</td>
+                                                    
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="min"></a>
+                        <span class="name"><b>min</b><a href="#min"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>min(value)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="142" class="link-to-prism">projects/time-select/src/lib/time-select-input.directive.ts:142</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>value</td>
+                                                    
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="max"></a>
+                        <span class="name"><b>max</b><a href="#max"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>max(value)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="150" class="link-to-prism">projects/time-select/src/lib/time-select-input.directive.ts:150</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>value</td>
+                                                    
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="disabled"></a>
+                        <span class="name"><b>disabled</b><a href="#disabled"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>disabled(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="159" class="link-to-prism">projects/time-select/src/lib/time-select-input.directive.ts:159</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>value</td>
+                                                    
+                                                            <td>
+                                                                        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Directive,
+  ElementRef,
+  EventEmitter,
+  forwardRef,
+  HostBinding,
+  HostListener,
+  Inject,
+  Input,
+  OnDestroy,
+  Optional,
+  Output
+} from &#x27;@angular/core&#x27;;
+import {
+  AbstractControl,
+  ControlValueAccessor,
+  NG_VALIDATORS,
+  NG_VALUE_ACCESSOR,
+  ValidationErrors,
+  Validator,
+  ValidatorFn,
+  Validators
+} from &#x27;@angular/forms&#x27;;
+import {coerceBooleanProperty} from &#x27;@angular/cdk/coercion&#x27;;
+import {DOWN_ARROW} from &#x27;@angular/cdk/keycodes&#x27;;
+import {MAT_INPUT_VALUE_ACCESSOR, MatFormField, ThemePalette} from &#x27;@angular/material&#x27;;
+import {Observable, Subject, Subscription} from &#x27;rxjs&#x27;;
+import {TimeAdapter} from &#x27;./time-adapter.service&#x27;;
+import {MAT_TIME_FORMATS, MatTimeFormats} from &#x27;./time-formats&#x27;;
+import {MatTimeSelectComponent} from &#x27;./time-select.component&#x27;;
+
+/**
+ * An event used for time select input and change events. We don&#x27;t always have access to a native
+ * input or change event because the event may have been triggered by the user clicking on the
+ * calendar popup. For consistency, we always use MatTimeSelectInputEvent instead.
+ */
+export class MatTimeSelectInputEvent&lt;D&gt; {
+
+  /** The new value for the target time select input. */
+  value: D;
+
+  constructor(
+    /** Reference to the time select input component that emitted the event. */
+    public target: MatTimeSelectInputDirective&lt;D&gt;,
+    /** Reference to the native input element associated with the time select input. */
+    public targetElement: HTMLElement) {
+    this.value &#x3D; this.target.value;
+  }
+
+}
+
+/** Directive used to connect an input to a MatTimeSelectComponent. */
+@Directive({
+  selector: &#x27;input[matTimeSelect]&#x27;,
+  providers: [
+    {provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() &#x3D;&gt; MatTimeSelectInputDirective), multi: true},
+    {provide: NG_VALIDATORS, useExisting: forwardRef(() &#x3D;&gt; MatTimeSelectInputDirective), multi: true},
+    {provide: MAT_INPUT_VALUE_ACCESSOR, useExisting: MatTimeSelectInputDirective}
+  ],
+  exportAs: &#x27;matTimeSelectInput&#x27;
+})
+export class MatTimeSelectInputDirective&lt;D&gt; implements OnDestroy, ControlValueAccessor, Validator {
+
+  private _timeSelectSubscription &#x3D; Subscription.EMPTY;
+  private _localeSubscription: Subscription &#x3D; Subscription.EMPTY;
+
+  private _timeSelect: MatTimeSelectComponent&lt;D&gt;;
+
+  private _value: D;
+  private _min: D;
+  private _max: D;
+  private _disabled: boolean;
+
+  private _valueChange: Subject&lt;D | null&gt; &#x3D; new Subject&lt;D | null&gt;();
+  private _disabledChange: Subject&lt;boolean&gt; &#x3D; new Subject&lt;boolean&gt;();
+
+  /** The form control validator for whether the input parses. */
+  private readonly _parseValidator: ValidatorFn;
+  /** The form control validator for the min date time. */
+  private readonly _minValidator: ValidatorFn;
+  /** The form control validator for the max date time. */
+  private readonly _maxValidator: ValidatorFn;
+  /** The combined form control validator for this input. */
+  private readonly _validator: ValidatorFn | null;
+
+  /** Whether the last value set on the input was valid. */
+  private _lastValueValid: boolean;
+
+  /** Emits when a &#x60;change&#x60; event is fired on this &#x60;&lt;input&gt;&#x60;. */
+  @Output() readonly timeChange: EventEmitter&lt;MatTimeSelectInputEvent&lt;D&gt;&gt; &#x3D; new EventEmitter&lt;MatTimeSelectInputEvent&lt;D&gt;&gt;();
+  /** Emits when an &#x60;input&#x60; event is fired on this &#x60;&lt;input&gt;&#x60;. */
+  @Output() readonly timeInput: EventEmitter&lt;MatTimeSelectInputEvent&lt;D&gt;&gt; &#x3D; new EventEmitter&lt;MatTimeSelectInputEvent&lt;D&gt;&gt;();
+
+  /** Emits when the value changes (either due to user input or programmatic change). */
+  valueChange: Observable&lt;D | null&gt; &#x3D; this._valueChange.asObservable();
+  /** Emits when the disabled state has changed. */
+  disabledChange: Observable&lt;boolean&gt; &#x3D; this._disabledChange.asObservable();
+
+  private _onChange: (value: any) &#x3D;&gt; void &#x3D; () &#x3D;&gt; {};
+  private _onTouched: () &#x3D;&gt; void &#x3D; () &#x3D;&gt; {};
+  private _onValidatorChange: () &#x3D;&gt; void &#x3D; () &#x3D;&gt; {};
+
+  /** The time select that this input is associated with. */
+  @Input()
+  set matTimeSelect(value: MatTimeSelectComponent&lt;D&gt;) {
+    if (!value) {
+      return;
+    }
+
+    this._timeSelect &#x3D; value;
+    this._timeSelect.registerInput(this);
+    this._timeSelectSubscription.unsubscribe();
+
+    this._timeSelectSubscription &#x3D; this._timeSelect.selectedChange.subscribe((selected: D) &#x3D;&gt; {
+      this.value &#x3D; selected;
+      this._onChange(selected);
+      this._onTouched();
+      this.timeInput.emit(new MatTimeSelectInputEvent(this, this._elementRef.nativeElement));
+      this.timeChange.emit(new MatTimeSelectInputEvent(this, this._elementRef.nativeElement));
+    });
+  }
+
+  /** The value of the input. */
+  @Input()
+  get value(): D | null { return this._value; }
+  set value(value: D | null) {
+    value &#x3D; this._timeAdapter.deserialize(value);
+    this._lastValueValid &#x3D; !value || this._timeAdapter.isValid(value);
+    value &#x3D; this._getValidDateOrNull(value);
+    const oldValue &#x3D; this._value;
+    this._value &#x3D; value;
+    this._formatValue(value);
+
+    if (!this._timeAdapter.sameTime(oldValue, value)) {
+      this._valueChange.next(value);
+    }
+  }
+
+  /** The minimum valid date time. */
+  @Input()
+  get min(): D | null { return this._min; }
+  set min(value: D | null) {
+    this._min &#x3D; this._getValidDateOrNull(this._timeAdapter.deserialize(value));
+    this._onValidatorChange();
+  }
+
+  /** The maximum valid date time. */
+  @Input()
+  get max(): D | null { return this._max; }
+  set max(value: D | null) {
+    this._max &#x3D; this._getValidDateOrNull(this._timeAdapter.deserialize(value));
+    this._onValidatorChange();
+  }
+
+  /** Whether the time select input is disabled. */
+  @HostBinding()
+  @Input()
+  get disabled(): boolean { return this._disabled; }
+  set disabled(value: boolean) {
+    const disabled &#x3D; coerceBooleanProperty(value);
+    const element &#x3D; this._elementRef.nativeElement;
+    if (this.disabled !&#x3D;&#x3D; disabled) {
+      this._disabled &#x3D; disabled;
+      this._disabledChange.next(disabled);
+    }
+    if (disabled &amp;&amp; element.blur) {
+      element.blur();
+    }
+  }
+
+  /** @docs-private */
+  @HostBinding(&#x27;attr.aria-haspopup&#x27;)
+  get _ariaHasPopup(): boolean { return true; }
+
+  /** @docs-private */
+  @HostBinding(&#x27;attr.aria-owns&#x27;)
+  get _ariaOwns(): boolean { return (this._timeSelect &amp;&amp; this._timeSelect.opened &amp;&amp; !!this._timeSelect.id) || null; }
+
+  /** @docs-private */
+  @HostBinding(&#x27;attr.min&#x27;)
+  get _minTime(): string | null { return this.min ? this._timeAdapter.toIso8601(this.min) : null; }
+
+  /** @docs-private */
+  @HostBinding(&#x27;attr.max&#x27;)
+  get _maxTime(): string | null { return this.max ? this._timeAdapter.toIso8601(this.max) : null; }
+
+  constructor(private _elementRef: ElementRef&lt;HTMLInputElement&gt;,
+              @Optional() private _timeAdapter: TimeAdapter&lt;D&gt;,
+              @Optional() @Inject(MAT_TIME_FORMATS) private _timeFormats: MatTimeFormats,
+              @Optional() private _formField: MatFormField) {
+    this._parseValidator &#x3D; (): ValidationErrors | null &#x3D;&gt; {
+      return this._lastValueValid ? null : {&#x27;matTimeSelectParse&#x27;: {&#x27;text&#x27;: this._elementRef.nativeElement.value}};
+    };
+
+    this._minValidator &#x3D; (control: AbstractControl): ValidationErrors | null &#x3D;&gt; {
+      const value &#x3D; this._getValidDateOrNull(this._timeAdapter.deserialize(control.value));
+      return !this.min || !value || this._timeAdapter.compareTime(this.min, value) &lt;&#x3D; 0 ?
+        null : {&#x27;matTimeSelectMin&#x27;: {&#x27;min&#x27;: this.min, &#x27;actual&#x27;: value}};
+    };
+
+    this._maxValidator &#x3D; (control: AbstractControl): ValidationErrors | null &#x3D;&gt; {
+      const value &#x3D; this._getValidDateOrNull(this._timeAdapter.deserialize(control.value));
+      return !this.max || !value || this._timeAdapter.compareTime(this.max, value) &gt;&#x3D; 0 ?
+        null : {&#x27;matTimeSelectMax&#x27;: {&#x27;max&#x27;: this.max, &#x27;actual&#x27;: value}};
+    };
+
+    this._validator &#x3D; Validators.compose([
+      this._parseValidator,
+      this._minValidator,
+      this._maxValidator
+    ]);
+
+    this._localeSubscription &#x3D; this._timeAdapter.localeChanges.subscribe(
+      () &#x3D;&gt; this.value &#x3D; this.value
+    );
+  }
+
+  ngOnDestroy() {
+    this._timeSelectSubscription.unsubscribe();
+    this._localeSubscription.unsubscribe();
+    this._valueChange.complete();
+    this._disabledChange.complete();
+  }
+
+  // Implemented as part of ControlValueAccessor.
+  writeValue(value: any): void {
+    this.value &#x3D; value;
+  }
+
+  // Implemented as part of ControlValueAccessor.
+  registerOnChange(fn: any): void {
+    this._onChange &#x3D; fn;
+  }
+
+  // Implemented as part of ControlValueAccessor.
+  registerOnTouched(fn: any): void {
+    this._onTouched &#x3D; fn;
+  }
+
+  // Implemented as part of ControlValueAccessor.
+  setDisabledState(isDisabled: boolean): void {
+    this.disabled &#x3D; isDisabled;
+  }
+
+  /** @docs-private */
+  validate(control: AbstractControl): ValidationErrors | null {
+    return this._validator ? this._validator(control) : null;
+  }
+
+  /** @docs-private */
+  registerOnValidatorChange(fn: () &#x3D;&gt; void): void {
+    this._onValidatorChange &#x3D; fn;
+  }
+
+  /**
+   * Handle keydown event.
+   * @param event The event object.
+   */
+  @HostListener(&#x27;keydown&#x27;, [&#x27;$event&#x27;])
+  onKeydown(event: KeyboardEvent) {
+    const isAltDownArrow &#x3D; event.altKey &amp;&amp; event.keyCode &#x3D;&#x3D;&#x3D; DOWN_ARROW;
+
+    if (this._timeSelect &amp;&amp; isAltDownArrow &amp;&amp; !this._elementRef.nativeElement.readOnly) {
+      this._timeSelect.open();
+      event.preventDefault();
+    }
+  }
+
+  /**
+   * Handle input event.
+   * @param value The current value of the input.
+   */
+  @HostListener(&#x27;input&#x27;, [&#x27;$event.target.value&#x27;])
+  onInput(value: string) {
+    let time &#x3D; this._timeAdapter.parse(value, this._timeFormats.parse.timeInput);
+    this._lastValueValid &#x3D; !time || this._timeAdapter.isValid(time);
+    time &#x3D; this._getValidDateOrNull(time);
+
+    if (!this._timeAdapter.sameTime(this._value, time)) {
+      this._value &#x3D; time;
+      this._onChange(time);
+      this._valueChange.next(time);
+      this.timeInput.emit(new MatTimeSelectInputEvent(this, this._elementRef.nativeElement));
+    }
+  }
+
+  /**
+   * Handle change event.
+   */
+  @HostListener(&#x27;change&#x27;)
+  onChange() {
+    this.timeChange.emit(new MatTimeSelectInputEvent(this, this._elementRef.nativeElement));
+  }
+
+  /**
+   * Handle blur event.
+   */
+  @HostListener(&#x27;blur&#x27;)
+  onBlur() {
+    if (this.value) {
+      this._formatValue(this.value);
+    }
+    this._onTouched();
+  }
+
+  /** Returns the palette used by the input&#x27;s form field, if any. */
+  getThemePalette(): ThemePalette {
+    return this._formField ? this._formField.color : undefined;
+  }
+
+  /**
+   * Gets the element that the time select popup should be connected to.
+   * @return The element to connect the popup to.
+   */
+  getConnectedOverlayOrigin(): ElementRef {
+    return this._formField ? this._formField.getConnectedOverlayOrigin() : this._elementRef;
+  }
+
+  /** Formats a value and sets it on the input element. */
+  private _formatValue(value: D | null) {
+    this._elementRef.nativeElement.value &#x3D; value ? this._timeAdapter.format(value, this._timeFormats.display.timeInput) : &#x27;&#x27;;
+  }
+
+  /**
+   * @param obj The object to check.
+   * @returns The given object if it is both a date instance and valid, otherwise null.
+   */
+  private _getValidDateOrNull(obj: any): D | null {
+    return this._timeAdapter.isDateInstance(obj) &amp;&amp; this._timeAdapter.isValid(obj) ? obj : null;
+  }
+
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'directive';
+            var COMPODOC_CURRENT_PAGE_URL = 'MatTimeSelectInputDirective.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
