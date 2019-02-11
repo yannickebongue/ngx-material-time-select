@@ -17,7 +17,19 @@ function copyFiles() {
     .pipe(dest(out));
 }
 
-exports['build'] = build;
+function pack() {
+  return run(`npm pack`, {cwd: out, verbosity: 3}).exec();
+}
+
+function publish() {
+  return run(`npm publish`, {cwd: out, verbosity: 3}).exec();
+}
+
+const buildLib = series(build, theming, css, copyFiles);
+
+exports['build:lib'] = buildLib;
 exports['build:docs'] = compodoc.build;
 exports['serve:docs'] = compodoc.serve;
-exports['default'] = series(build, theming, css, copyFiles);
+exports['package'] = series(buildLib, pack);
+exports['publish'] = series(buildLib, publish);
+exports['default'] = buildLib;

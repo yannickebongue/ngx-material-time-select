@@ -175,6 +175,9 @@ export class MatTimeSelectContentComponent<D> extends _MatTimeSelectContentMixin
       if (this.getPrev(unit).isBefore(this.minTime)) {
         min = this.value.get(unit);
       }
+      if (this.getNext(unit).isBefore(this.minTime)) {
+        min = this.minTime.get(unit);
+      }
     }
     return min;
   }
@@ -189,6 +192,9 @@ export class MatTimeSelectContentComponent<D> extends _MatTimeSelectContentMixin
     if (this.maxTime && this.value.isSame(this.maxTime, 'day')) {
       if (this.getNext(unit).isAfter(this.maxTime)) {
         max = this.value.get(unit);
+      }
+      if (this.getPrev(unit).isAfter(this.maxTime)) {
+        max = this.maxTime.get(unit);
       }
     }
     return max;
