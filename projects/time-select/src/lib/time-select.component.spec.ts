@@ -3,8 +3,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatTimeSelectComponent } from './time-select.component';
 
 describe('MatTimeSelectComponent', () => {
-  let component: MatTimeSelectComponent;
-  let fixture: ComponentFixture<MatTimeSelectComponent>;
+  let component: MatTimeSelectComponent<any>;
+  let fixture: ComponentFixture<MatTimeSelectComponent<any>>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

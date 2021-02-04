@@ -1,9 +1,9 @@
 <h2>Options</h2>
 <p>
-  <mat-checkbox [(ngModel)]="timeSelectDisabled">Disable time select</mat-checkbox>
-  <mat-checkbox [(ngModel)]="inputDisabled">Disable input</mat-checkbox>
+  <mat-checkbox [(ngModel)]="timeSelectDisabled" ngDefaultControl>Disable time select</mat-checkbox>
+  <mat-checkbox [(ngModel)]="inputDisabled" ngDefaultControl>Disable input</mat-checkbox>
   <mat-form-field>
-    <mat-select [(ngModel)]="color" placeholder="Color">
+    <mat-select [(ngModel)]="color" placeholder="Color" ngDefaultControl>
       <mat-option value="primary">Primary</mat-option>
       <mat-option value="accent">Accent</mat-option>
       <mat-option value="warn">Warn</mat-option>
@@ -13,14 +13,14 @@
 <p>
   <mat-form-field color="accent">
     <mat-label>Min time</mat-label>
-    <input matInput [matTimeSelect]="minTimeSelect" [(ngModel)]="minTime"
+    <input matInput [matTimeSelect]="minTimeSelect" [(ngModel)]="minTime" ngDefaultControl
            [disabled]="inputDisabled" [max]="maxTime">
     <mat-time-select-toggle matSuffix [for]="minTimeSelect"></mat-time-select-toggle>
     <mat-time-select #minTimeSelect [disabled]="timeSelectDisabled"></mat-time-select>
   </mat-form-field>
   <mat-form-field color="accent">
     <mat-label>Max time</mat-label>
-    <input matInput [matTimeSelect]="maxTimeSelect" [(ngModel)]="maxTime"
+    <input matInput [matTimeSelect]="maxTimeSelect" [(ngModel)]="maxTime" ngDefaultControl
            [disabled]="inputDisabled" [min]="minTime">
     <mat-time-select-toggle matSuffix [for]="maxTimeSelect"></mat-time-select-toggle>
     <mat-time-select #maxTimeSelect [disabled]="timeSelectDisabled"></mat-time-select>
@@ -29,7 +29,7 @@
 <p>
   <mat-form-field color="accent">
     <mat-label>Start at time</mat-label>
-    <input matInput [matTimeSelect]="startAtPicker" [(ngModel)]="startAt"
+    <input matInput [matTimeSelect]="startAtPicker" [(ngModel)]="startAt" ngDefaultControl
            [disabled]="inputDisabled">
     <mat-time-select-toggle matSuffix [for]="startAtPicker"></mat-time-select-toggle>
     <mat-time-select #startAtPicker [disabled]="timeSelectDisabled"></mat-time-select>

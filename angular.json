@@ -10,13 +10,14 @@
       "prefix": "app",
       "schematics": {
         "@schematics/angular:component": {
-          "styleext": "scss"
+          "style": "scss"
         }
       },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "aot": true,
             "outputPath": "dist/ngx-material-time-select",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -53,6 +54,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             }
@@ -141,7 +146,7 @@
       "prefix": "mat",
       "schematics": {
         "@schematics/angular:component": {
-          "styleext": "scss"
+          "style": "scss"
         }
       },
       "architect": {
@@ -150,6 +155,11 @@
           "options": {
             "tsConfig": "projects/time-select/tsconfig.lib.json",
             "project": "projects/time-select/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/time-select/tsconfig.lib.prod.json"
+            }
           }
         },
         "test": {
@@ -175,5 +185,8 @@
       }
     }
   },
-  "defaultProject": "ngx-material-time-select"
+  "defaultProject": "ngx-material-time-select",
+  "cli": {
+    "analytics": "79923fb9-3130-48e5-9f6d-b305e7cbd626"
+  }
 }

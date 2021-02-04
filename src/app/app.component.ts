@@ -8,6 +8,7 @@ import {OverlayContainer} from '@angular/cdk/overlay';
 })
 export class AppComponent {
 
+  title = 'Angular Material Time Select';
   dark = false;
 
   constructor(private _element: ElementRef<HTMLElement>,
