@@ -48,9 +48,9 @@ export class MatTimeSelectToggleComponent<D> implements AfterContentInit, OnChan
   @Input() tabIndex: number | null;
 
   /** Custom icon set by the consumer. */
-  @ContentChild(MatTimeSelectToggleIconDirective) customIcon: MatTimeSelectToggleIconDirective;
+  @ContentChild(MatTimeSelectToggleIconDirective, /* TODO: add static flag */ {}) customIcon: MatTimeSelectToggleIconDirective;
   /** Underlying button element. */
-  @ViewChild('button') button: MatButton;
+  @ViewChild('button', { static: true }) button: MatButton;
 
   /** Whether the toggle button is disabled. */
   @Input()

@@ -45,7 +45,7 @@ export class MatTimeUnitSelectComponent<D> implements AfterViewInit, OnInit {
   @Output() valueChange: EventEmitter<number> = new EventEmitter<number>();
 
   /** The panel element containing all time select options. */
-  @ViewChild('panel') panel: ElementRef<HTMLElement>;
+  @ViewChild('panel', { static: true }) panel: ElementRef<HTMLElement>;
 
   constructor(private _changeDetectorRef: ChangeDetectorRef,
               private _timeAdapter: TimeAdapter<D>,

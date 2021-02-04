@@ -39,7 +39,7 @@ export class MatTimeUnitOptionComponent<D> extends _MatTimeUnitOptionMixinBase i
   @Input() disableRipple: boolean;
 
   /** The element containing the display text of the option. */
-  @ViewChild('text') _text: ElementRef<HTMLElement>;
+  @ViewChild('text', { static: true }) _text: ElementRef<HTMLElement>;
 
   /** @docs-private */
   @HostBinding('class') readonly class = 'mat-time-unit-option';
