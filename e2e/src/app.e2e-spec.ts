@@ -10,7 +10,7 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('Welcome to ngx-material-time-select!');
+    expect(page.getTitleText()).toEqual('Angular Material Time Select Demo');
   });
 
   afterEach(async () => {
